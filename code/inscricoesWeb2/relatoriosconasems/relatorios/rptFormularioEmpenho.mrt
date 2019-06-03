@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnn Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnn</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=False;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventosConasems;User ID=sa</ConnectionString>
+        <Name>cnn</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnn>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <Recibos Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Recibos</Alias>
+        <Columns isList="true" count="176">
+          <value>cdParticipante,System.String</value>
+          <value>cdCredencial,System.String</value>
+          <value>dtCredencial,System.DateTime</value>
+          <value>noParticipante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsDocIdentificador,System.String</value>
+          <value>dsEmail,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>nuEndereco,System.String</value>
+          <value>dsComplementoEndereco,System.String</value>
+          <value>noBairro,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noPais,System.String</value>
+          <value>dsCelularPessoal,System.String</value>
+          <value>dsFonePessoal,System.String</value>
+          <value>dsFoneInstitucional,System.String</value>
+          <value>dsRamalFoneInstitucional,System.String</value>
+          <value>dsFaxInstitucional,System.String</value>
+          <value>dsRamalFaxInstitucional,System.String</value>
+          <value>dsTipoInstituicao,System.String</value>
+          <value>nuCNPJInstituicao,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>dsSecretario,System.String</value>
+          <value>dsSexo,System.String</value>
+          <value>dsNascimento,System.String</value>
+          <value>dsUFAtuacaoProfissional,System.String</value>
+          <value>dsMunicipioAtuacaoProfissional,System.String</value>
+          <value>dsObservacoes,System.String</value>
+          <value>dsDeclaracaoSecretario,System.String</value>
+          <value>dsAuxiliar1,System.String</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>dsAuxiliar3,System.String</value>
+          <value>dsAuxiliar4,System.String</value>
+          <value>dsAuxiliar5,System.String</value>
+          <value>dsAuxiliar6,System.String</value>
+          <value>dsAuxiliar7,System.String</value>
+          <value>dsAuxiliar8,System.String</value>
+          <value>dsAuxiliar9,System.String</value>
+          <value>dsAuxiliar10,System.String</value>
+          <value>dsAuxiliar11,System.String</value>
+          <value>dsAuxiliar12,System.String</value>
+          <value>dsAuxiliar13,System.String</value>
+          <value>dtCadastro,System.DateTime</value>
+          <value>dsSenhaWeb,System.String</value>
+          <value>flEmailValidado,System.Boolean</value>
+          <value>flSMS_BV_Enviado,System.Boolean</value>
+          <value>flSMS_FoneValido,System.Boolean</value>
+          <value>cdPatrocinador,System.String</value>
+          <value>dsCampoExtraPreCad,System.String</value>
+          <value>tpInscrPatrocinada,System.String</value>
+          <value>flDocumentoConfirmado,System.Boolean</value>
+          <value>dsOperacao,System.String</value>
+          <value>cdOperador,System.String</value>
+          <value>dtOperacao,System.DateTime</value>
+          <value>flAceiteSMS,System.Boolean</value>
+          <value>dsIdioma,System.String</value>
+          <value>dsPassagemAerea,System.String</value>
+          <value>dsVooCiaAereaIda,System.String</value>
+          <value>dsVooOrigemIda,System.String</value>
+          <value>dsVooDestinoIda,System.String</value>
+          <value>dsVooDataSaidaIda,System.String</value>
+          <value>dsVooHoraSaidaIda,System.String</value>
+          <value>dsVooDataChegadaIda,System.String</value>
+          <value>dsVooHoraChegadaIda,System.String</value>
+          <value>dsVooIda,System.String</value>
+          <value>dsVooLocalizadorIda,System.String</value>
+          <value>dsVooCiaAereaVolta,System.String</value>
+          <value>dsVooOrigemVolta,System.String</value>
+          <value>dsVooDestinoVolta,System.String</value>
+          <value>dsVooDataSaidaVolta,System.String</value>
+          <value>dsVooHoraSaidaVolta,System.String</value>
+          <value>dsVooDataChegadaVolta,System.String</value>
+          <value>dsVooHoraChegadaVolta,System.String</value>
+          <value>dsVooVolta,System.String</value>
+          <value>dsVooLocalizadorVolta,System.String</value>
+          <value>dtPrimeiraCredencial,System.DateTime</value>
+          <value>flConfirmacaoInscricao,System.Boolean</value>
+          <value>dtConfirmacaoInscricao,System.DateTime</value>
+          <value>cdAtividade1,System.String</value>
+          <value>cdAtividade2,System.String</value>
+          <value>cdAtividade3,System.String</value>
+          <value>cdAtividade4,System.String</value>
+          <value>cdAtividade5,System.String</value>
+          <value>cdAtividade6,System.String</value>
+          <value>cdAtividade7,System.String</value>
+          <value>dtPedido,System.DateTime</value>
+          <value>vlTotalPedido,System.Decimal</value>
+          <value>dsCupomDesconto,System.String</value>
+          <value>vlDescontoCalculado,System.Decimal</value>
+          <value>flPago,System.Boolean</value>
+          <value>tpPagamentoPedido,System.String</value>
+          <value>qtdParcelas,System.Int32</value>
+          <value>noBandeira,System.String</value>
+          <value>cdTransacaoOutrosTpPgto,System.String</value>
+          <value>nrBoleto,System.String</value>
+          <value>dtEmissaoBoleto,System.DateTime</value>
+          <value>dtVencimentoBoleto,System.DateTime</value>
+          <value>flRecebidoBoleto,System.Boolean</value>
+          <value>tpPessoaRecibo,System.String</value>
+          <value>nuCPFCNPJRecibo,System.String</value>
+          <value>dsInscricaoEstadualRecibo,System.String</value>
+          <value>dsNomeRecibo,System.String</value>
+          <value>nuCEPRecibo,System.String</value>
+          <value>dsEnderecoRecibo,System.String</value>
+          <value>dsComplementoEnderRecibo,System.String</value>
+          <value>noBairroRecibo,System.String</value>
+          <value>noCidadeRecibo,System.String</value>
+          <value>dsUFRecibo,System.String</value>
+          <value>dsEmailResponsavelFinanceiro,System.String</value>
+          <value>dsFoneResponsavelFinanceiro,System.String</value>
+          <value>dsRamalResponsavelFinanceiro,System.String</value>
+          <value>vlRecibo,System.Decimal</value>
+          <value>dtRecibo,System.DateTime</value>
+          <value>vlDesconto,System.Decimal</value>
+          <value>tpRecebimento1,System.String</value>
+          <value>dsDocRecebimento1,System.String</value>
+          <value>vlRecebimento1,System.Decimal</value>
+          <value>tpRecebimento2,System.String</value>
+          <value>dsDocRecebimento2,System.String</value>
+          <value>vlRecebimento2,System.Decimal</value>
+          <value>dsObservacaoRecebimento,System.String</value>
+          <value>cdOperadorDesconto,System.String</value>
+          <value>nrIPAcesso,System.String</value>
+          <value>dsNavegadorAcesso,System.String</value>
+          <value>dsTipoEmissaoRecibo,System.String</value>
+          <value>cdOperadorRecibo,System.String</value>
+          <value>flBoletoRegistrado,System.Boolean</value>
+          <value>flBoletoAlterado,System.Boolean</value>
+          <value>dtBoletoAlterado,System.DateTime</value>
+          <value>flBoletoEnviadoBanco,System.Boolean</value>
+          <value>dtBoletoEnviadoBanco,System.DateTime</value>
+          <value>cdAnoEvento,System.String</value>
+          <value>cdCategoria,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>flPagamento,System.Boolean</value>
+          <value>vlPagamento,System.Decimal</value>
+          <value>flCertificado,System.Boolean</value>
+          <value>flAtividades,System.Boolean</value>
+          <value>flMaterial,System.Boolean</value>
+          <value>flRefeicao,System.Boolean</value>
+          <value>flCortesias,System.Boolean</value>
+          <value>flDescontos,System.Boolean</value>
+          <value>flSorteio,System.Boolean</value>
+          <value>flQuestionario,System.Boolean</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>flVisivelWeb,System.Boolean</value>
+          <value>flEnviarSMS,System.Boolean</value>
+          <value>flCriticar,System.Boolean</value>
+          <value>flControlado,System.Boolean</value>
+          <value>flConfirmacaoCadWeb,System.Boolean</value>
+          <value>flVerificarPreCadastro,System.Boolean</value>
+          <value>tpVerificacaoPreCadastro,System.String</value>
+          <value>dsMensagemPreCadastro,System.String</value>
+          <value>flPatrocinada,System.Boolean</value>
+          <value>flRequerConfirmacaoDoc,System.Boolean</value>
+          <value>dsCorCracha,System.String</value>
+          <value>flPreCadastroExclusivo,System.Boolean</value>
+          <value>dsMensagemConfirmacaoDoc,System.String</value>
+          <value>dsPreCadastroCampoPadraoCadastro,System.String</value>
+          <value>flCPFCNPJObrigatorio,System.Boolean</value>
+          <value>flLiberarCPFCNPJCoringa,System.Boolean</value>
+          <value>flEnviarEmail,System.Boolean</value>
+          <value>noCategoriaIngles,System.String</value>
+          <value>noCategoriaEspanhol,System.String</value>
+          <value>noCategoriaFrances,System.String</value>
+          <value>dsMsgPreCadastroIng,System.String</value>
+          <value>dsMsgPreCadastroEsp,System.String</value>
+          <value>dsMsgPreCadastroFra,System.String</value>
+          <value>qtdLimiteInscricao,System.Int32</value>
+          <value>flAutorizarMatricula,System.Boolean</value>
+          <value>flParticiparMeeting,System.Boolean</value>
+          <value>noOperador,System.String</value>
+          <value>vlTotalRecibo,System.Decimal</value>
+          <value>cdRecibo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Recibos</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdRecibo,,22,12</value>
+          <value>_x0040_cdEvento,,22,4</value>
+        </Parameters>
+        <SqlCommand>SELECT p.cdParticipante cdRecibo, p.*, cat.*, op.noOperador,
+       (p.vlRecibo - p.vlDesconto) vlTotalRecibo
+  FROM tbParticipantes p 
+  join tbCategorias cat
+    on p.cdAnoEvento = cat.cdAnoEvento
+   and p.cdCategoria = cat.cdCategoria  
+ join (
+select cdOperador, noOperador  from tbOperadores opl where opl.cdAnoEvento = @cdEvento
+	union 
+select cdOperador, noOperador  from tbOperadorweb opw
+  
+  ) op on p.cdOperadorRecibo = op.cdOperador  
+ where p.cdAnoEvento = @cdEvento
+and p.cdParticipante = @cdRecibo</SqlCommand>
+      </Recibos>
+      <Evento Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Evento</Alias>
+        <Columns isList="true" count="28">
+          <value>cdEvento,System.String</value>
+          <value>cdCliente,System.String</value>
+          <value>noEvento,System.String</value>
+          <value>dsEvento,System.String</value>
+          <value>dtInicioEvento,System.DateTime</value>
+          <value>dtFinalEvento,System.DateTime</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>flEventoComRecebimentos,System.Boolean</value>
+          <value>dsSenha,System.String</value>
+          <value>dsEmailEvento,System.String</value>
+          <value>flSMS_BV,System.Boolean</value>
+          <value>dsSMS_Remetente,System.String</value>
+          <value>dsSMS_Mensagem_BV,System.String</value>
+          <value>imgBanner,System.Byte[]</value>
+          <value>imgLogo,System.Byte[]</value>
+          <value>cdEvento2,System.String</value>
+          <value>nomRealizador,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsInscricaoEstadual,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>nomBairro,System.String</value>
+          <value>nomCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>nuFone,System.String</value>
+          <value>nuFax,System.String</value>
+          <value>dsSite,System.String</value>
+          <value>dsEmail,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Evento</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select *
+	from dbo.tbEventos evto
+left join dbo.tbConfiguracoesGerais dad
+  on dad.cdConfig = dad.cdConfig
+where evto.cdAnoEvento = @cdEvento </SqlCommand>
+      </Evento>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Página1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <CabeçalhoPágina1 Ref="6" type="PageHeaderBand" isKey="true">
+          <Border>None;Black;3;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,21,29.7</ClientRectangle>
+          <Components isList="true" count="27">
+            <Image1 Ref="7" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,21,29.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>http://inscricoesweb.fazendomais.com/imagensgeral/001305/fundo%20Recibo.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Texto1 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.6,4.4,12.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Microsoft Sans Serif,16,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>DADOS DO(A) CONGRESSISTA</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto1>
+            <TextoRico1 Ref="9" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>2,6.8,17,5.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn />
+              <Margins>0,0,0,0</Margins>
+              <Name>TextoRico1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>__LP___x005C_rtf1_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fswiss_x005C_fprq2_x005C_fcharset0_x0020_Arial_x003B___RP____LP___x005C_f1_x005C_fnil_x005C_fcharset0_x0020_Microsoft_x0020_Sans_x0020_Serif_x003B___RP____RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_qj_x005C_f0_x005C_fs24_x0020_Evento:_x0020__x005C_b_x007B_Evento.noEvento_x007D__x0020_-_x0020__x007B_Evento.dsEvento_x007D__x0020__x005C_par_x000D__x000A__x005C_b0_x005C_par_x000D__x000A_N_x005C__x0027_ba_x0020_da_x0020_Inscri_x005C__x0027_e7_x005C__x0027_e3o:_x0020__x005C_b_x007B_Recibos.cdParticipante_x007D__x005C_b0_x005C_par_x000D__x000A__x005C_par_x000D__x000A_Nome_x0020_do_x0028_a_x0029__x0020_Participante:_x0020__x005C_b_x007B_Recibos.noParticipante_x007D__x0020__x005C_par_x000D__x000A__x005C_b0_x005C_par_x000D__x000A_CPF:_x0020__x005C_b_x007B_oclsfuncoes.CPFCNPJMascarar_x0028_Recibos.nuCPFCNPJRecibo.Trim_x0028__x0029__x0029__x007D__x005C_b0_x005C_par_x000D__x000A__x005C_par_x000D__x000A_Valor_x0020_da_x0020_Inscri_x005C__x0027_e7_x005C__x0027_e3o:_x0020__x005C_b_x0020_R_x0024__x0020__x007B_Recibos.vlTotalRecibo_x007D__x0020__x0028__x0020__x007B_oclsfuncoes.MoedaPorExtenso_x0028_Recibos.vlTotalRecibo_x0029__x007D__x0020__x0029__x0020__x005C_b0_x005C_f1_x005C_fs17_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+            </TextoRico1>
+            <Texto4 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,16.2,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>8d39e76c774547c7b543649df67843b2</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto4</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>ENDEREÇO COMPLETO:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto4>
+            <Texto5 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,17.2,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto5</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>CEP:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto5>
+            <Texto6 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,17.8,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto6</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>TELS.:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto6>
+            <Texto7 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,18.4,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto7</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>FAX.:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto7>
+            <Texto8 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,19,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto8</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>CNPJ:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto8>
+            <Texto9 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,19.6,2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto9</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>I.E.:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto9>
+            <Texto11 Ref="16" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,16.4,11.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto11</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Esplanada dos Ministérios, Bloco G, anexo B, sala 144-B – Zona Cívico Administrativa. Brasília – DF</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Texto11>
+            <Texto13 Ref="17" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,17.8,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto13</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>(61) 3223 0155</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto13>
+            <Texto12 Ref="18" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,17.2,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto12</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>70058-900</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto12>
+            <Texto16 Ref="19" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,19.6,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto16</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>ISENTO</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto16>
+            <Texto15 Ref="20" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,19,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto15</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>33.484.825/0001-88</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto15>
+            <Texto14 Ref="21" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,18.4,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto14</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>(61) 3223 0155 ramal 35</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto14>
+            <Texto17 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,21,4.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto17</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>DADOS BANCÁRIOS</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto17>
+            <Texto18 Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,22,4.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>a6eeeb3bbac14703a1a47a5da9ec45fa</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto18</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>BANCO:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto18>
+            <Texto19 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,22.6,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>a2a7b132ce444d94be9d5d1de7f6ac6e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto19</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>AGÊNCIA Nº:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto19>
+            <Texto20 Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,23.2,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>792a081a426b47358af0293a0fedff0a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto20</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>C/C:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto20>
+            <Texto21 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,23.8,3.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>897d3d4fb18d46eea4a7a54a1662e641</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto21</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Titular:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto21>
+            <Texto23 Ref="27" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,23.8,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>42d23dd9a5ea462babec1f8e0721cc48</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto23</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>CONASEMS</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto23>
+            <Texto24 Ref="28" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,23.2,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>732516de77ff4373b271117add695c0b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto24</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>191.292-5</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto24>
+            <Texto25 Ref="29" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,22.6,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>386b88851861433fa461d189218608af</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto25</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>1607-1</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto25>
+            <Texto22 Ref="30" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,22,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>d78a71c636524c11ae7dd68a60e8f801</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto22</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Brasil - 001</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto22>
+            <Texto3 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,15.6,5.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto3</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>RAZÃO SOCIAL:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto3>
+            <Texto10 Ref="32" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.4,15.6,11.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto10</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>Conselho Nacional de Secretários Municipais de Saúde - CONASEMS</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto10>
+            <Text1 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,14.2,17,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Microsoft Sans Serif,16,Bold</Font>
+              <Guid>850ce3f85311431ab6328dcf761525f0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>DADOS PARA EMISSÃO DE EMPENHO</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>CabeçalhoPágina1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </CabeçalhoPágina1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8b19feded9804545a09aff9f371e339f</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="34" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <ImageStretch>True</ImageStretch>
+        <ShowBehind>True</ShowBehind>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+  </Pages>
+  <PrinterSettings Ref="35" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="10">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+    <value>cllEventos.dll</value>
+    <value>CLLFuncoes.dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>3/5/2016 3:17:44 PM</ReportChanged>
+  <ReportCreated>7/6/2011 11:26:48 PM</ReportCreated>
+  <ReportFile>C:\Google Drive\Desenvolvimento\Conasems\inscr\relatorios\rptFormularioEmpenho.mrt</ReportFile>
+  <ReportGuid>b0dbe5e5f2014c49b23f65e96ad9a559</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+//using cllEventos;
+using CLLFuncoes;
+
+namespace Reports
+{
+    
+    public class rptReciboPF : Stimulsoft.Report.StiReport
+    {
+         CLLFuncoes.ClsFuncoes oclsfuncoes = new ClsFuncoes();
+        public rptReciboPF()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

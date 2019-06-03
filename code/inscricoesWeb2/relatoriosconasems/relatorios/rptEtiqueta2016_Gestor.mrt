@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <CacheAllData>True</CacheAllData>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventosConasems;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <qry1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>qry1</Alias>
+        <Columns isList="true" count="19">
+          <value>cdCredencial,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>noParticipante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>cdCategoria,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>acomp,System.Int32</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>dsUFTrab,System.String</value>
+          <value>noCidadeTrab,System.String</value>
+          <value>noAreaAtuacao,System.String</value>
+          <value>voto,System.String</value>
+          <value>noTituloRelatorios,System.String</value>
+          <value>noSubTitulo,System.String</value>
+          <value>noLocal,System.String</value>
+          <value>noTipoAtividade,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>qry1</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdParticipante,,22,9</value>
+          <value>_x0040_cdAnoEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select p.cdCredencial, p.cdParticipante, p.noParticipante, p.noEtiqueta, p.noInstituicao, p.cdCategoria, c.noCategoria, 
+	p.dsUF,
+	case when (noCidade = '') 
+	   	    then '' 
+else (select dsmunicipio from tbMunicipios where cdMunicipioIBGE = nocidade) 
+       end noCidade,
+	   0 acomp,
+       dsAuxiliar2,
+	   dsUFAtuacaoProfissional dsUFTrab,
+	   case when (dsMunicipioAtuacaoProfissional = '') 
+	   	    then '' 
+else (select dsmunicipio from tbMunicipios where cdMunicipioIBGE = dsMunicipioAtuacaoProfissional) 
+      end noCidadeTrab
+	  ,case when (dsSecretario = 'SIM') THEN 'SECRETÁRIO MUNICIPAL DE SAÚDE' ELSE '' END noAreaAtuacao
+,case when ((dsSecretario = 'SIM') and (select cdMunicipioIBGE from dbo.tbMunicipiosDesconto where cdMunicipioIBGE = substring(dsMunicipioAtuacaoProfissional,1,6)) is not null) then 'APTO A VOTAR' else '' end voto
+
+,mat.noTituloRelatorios, noSubTitulo, noLocal, noTipoAtividade
+
+from tbParticipantes p
+join tbCategorias c
+on P.cdAnoEvento = c.cdAnoEvento
+and p.cdcategoria = c.cdcategoria
+
+join tbEventos e
+on p.cdAnoEvento = e.cdAnoEvento
+
+left join 
+(select m.cdAnoEvento, m.cdParticipante, m.cdAtividade, noTituloRelatorios, noSubTitulo, noLocal, noTipoAtividade
+	from tbmatriculas m
+join tbAtividades atv
+on m.cdAnoEvento = atv.cdAnoEvento
+and m.cdAtividade = atv.cdAtividade
+join tbLocais l 
+on atv.cdLocal = l.cdLocal
+
+join tbTiposAtividades tpatv
+on atv.cdTipoAtividade = tpatv.cdTipoAtividade
+
+where m.cdAtividade &gt; @cdAnoEvento+'001' --and m.cdAtividade &lt;= '001305018'
+) mat on P.cdAnoEvento = mat.cdAnoEvento
+and p.cdparticipante = mat.cdparticipante
+
+
+
+where p.cdAnoEvento = @cdAnoEvento
+and p.cdParticipante = @cdParticipante
+group by p.cdCredencial, p.cdParticipante, p.noParticipante, p.noEtiqueta, p.noInstituicao, p.cdCategoria, c.noCategoria, 
+       p.dsUF, p.noCidade, dsAuxiliar2, dsUFAtuacaoProfissional, dsMunicipioAtuacaoProfissional, dsSecretario
+	   ,mat.noTituloRelatorios, noSubTitulo, noLocal, noTipoAtividade</SqlCommand>
+      </qry1>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <NumberOfPass>DoublePass</NumberOfPass>
+  <Pages isList="true" count="1">
+    <Página1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados2 Ref="5" type="DataBand" isKey="true">
+          <AfterPrintEvent>
+</AfterPrintEvent>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,0.4,21,29.7</ClientRectangle>
+          <Components isList="true" count="8">
+            <Image1 Ref="6" type="Image" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0,0,21,29.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>http://inscricoesweb.fazendomais.com/imagensgeral/001305/Crachas_versoes_F01_S_linhas.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <CódigoBarras1 Ref="7" type="Stimulsoft.Report.BarCodes.StiBarCode" isKey="true">
+              <BackColor>White</BackColor>
+              <BarCodeType Ref="8" type="Stimulsoft.Report.BarCodes.StiEAN128bBarCodeType" isKey="true" />
+              <BeforePrintEvent>if ((qry1.cdCategoria == "00130410") || (qry1.cdCategoria == "00130405") || (qry1.cdCategoria == "00130407"))
+	CódigoBarras1.Enabled = false;
+else
+	CódigoBarras1.Enabled = true;</BeforePrintEvent>
+              <ClientRectangle>1.8,11.1,6.6,1.2</ClientRectangle>
+              <Code>{"00"+qry1.cdParticipante+qry1.cdCredencial}</Code>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold,Pixel</Font>
+              <ForeColor>Black</ForeColor>
+              <HorAlignment>Center</HorAlignment>
+              <Name>CódigoBarras1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <ShowLabelText>False</ShowLabelText>
+              <VertAlignment>Center</VertAlignment>
+            </CódigoBarras1>
+            <Texto2 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.5,7.15,9.6,0.75</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,17,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{IIF(qry1.noEtiqueta.Trim().ToUpper() != "", 
+     qry1.noEtiqueta.Trim().ToUpper(), 
+     qry1.noParticipante.Trim().ToUpper())}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Texto2>
+            <Texto3 Ref="10" type="Text" isKey="true">
+              <BeforePrintEvent>if ((qry1.cdCategoria == "00130410") || (qry1.cdCategoria == "00130405"))
+	Texto3.Enabled = false;
+else
+	Texto3.Enabled = true;</BeforePrintEvent>
+              <Brush>Transparent</Brush>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>1.6,12.3,7,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto3</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{"00"+qry1.cdParticipante+'-'+qry1.cdCredencial}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto3>
+            <Text1 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>0.5,8.5,9.6,0.55</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{IIF( ((qry1.cdCategoria.Trim() == "00130501") ||
+       (qry1.cdCategoria.Trim() == "00130509") ||
+       (qry1.cdCategoria.Trim() == "00130514") ||
+       (qry1.cdCategoria.Trim() == "00130515") ||
+       (qry1.cdCategoria.Trim() == "00130516") ||
+       (qry1.cdCategoria.Trim() == "00130517") ||
+       (qry1.cdCategoria.Trim() == "00130518")),"CONGRESSISTA", 
+     qry1.noCategoria.Trim().ToUpper())}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text1>
+            <Text2 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>0.5,9.25,9.6,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>418c55f00be04a149a8dbcebeedc9e09</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{qry1.noAreaAtuacao}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text3 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>0.5,10.3,9.6,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>63901b78977e421abf62ff8a1959335e</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{IIF(qry1.noCidadeTrab != "", qry1.noCidadeTrab, qry1.noCidade)} - {IIF(qry1.dsUFTrab != "", qry1.dsUFTrab, qry1.dsUF)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text3>
+            <Text4 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>11,3.4,9.6,1.75</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>7fee9fa33fc641949e831277bb9ae8db</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>Sua Atividade: 
+{qry1.noTipoAtividade} - {qry1.noTitulo}
+Local: {qry1.noLocal}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>qry1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </Dados2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>50045bf61bc54648b3b9cd51a338aeba</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="15" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+  </Pages>
+  <PrinterSettings Ref="16" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true">
+    <ShowDialog>False</ShowDialog>
+  </PrinterSettings>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Credencial</ReportAlias>
+  <ReportChanged>2/28/2016 3:43:31 PM</ReportChanged>
+  <ReportCreated>11/16/2010 9:54:32 PM</ReportCreated>
+  <ReportFile>C:\Google Drive\Desenvolvimento\Conasems\inscr\relatorios\rptEtiqueta2016_Gestor.mrt</ReportFile>
+  <ReportGuid>71fa77fc455c4578a26f94e8d0cb7be6</ReportGuid>
+  <ReportName>Credencial</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Credencial_31º_Conasems : Stimulsoft.Report.StiReport
+    {
+        
+        public Credencial_31º_Conasems()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <CacheAllData>True</CacheAllData>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Qu454rFm;Persist Security Info=True;Data Source=mssql.fazendomais.com;Integrated Security=False;Initial Catalog=fazendomais1;User ID=fazendomais1</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <qry1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>qry1</Alias>
+        <Columns isList="true" count="14">
+          <value>cdParticipante,System.String</value>
+          <value>noParticipante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>acomp,System.Int32</value>
+          <value>cdCredencial,System.String</value>
+          <value>cdCategoria,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>noCargo,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>dsAuxiliar1,System.String</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>noSubTitulo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>qry1</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdParticipante,,22,9</value>
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select p.cdCredencial, p.cdParticipante, p.noParticipante, p.noEtiqueta, p.noInstituicao, p.cdCategoria, c.noCategoria, p.noCargo,
+	p.dsUF, p.noCidade,
+	sum(case when (atv.cdTipoAtividade = '26') then 1 else 0 end) acomp,
+    p.dsAuxiliar1, p.dsAuxiliar2
+    ,atv.noSubTitulo
+from tbParticipantes p
+join tbCategorias c
+on P.cdEvento = c.cdEvento
+and p.cdcategoria = c.cdcategoria
+left join tbmatriculas m
+on P.cdEvento = m.cdEvento
+and p.cdparticipante = m.cdparticipante
+left join tbAtividades atv
+on m.cdEvento = atv.cdEvento
+and m.cdAtividade = atv.cdAtividade
+where p.cdEvento = @cdEvento
+and p.cdParticipante = @cdParticipante
+group by p.cdCredencial, p.cdParticipante, p.noParticipante, p.noEtiqueta, p.noInstituicao, p.cdCategoria, c.noCategoria, p.noCargo,
+       p.dsUF, p.noCidade, p.dsAuxiliar1, p.dsAuxiliar2, atv.noSubTitulo</SqlCommand>
+      </qry1>
+      <dependentes Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>dependentes</Alias>
+        <Columns isList="true" count="6">
+          <value>cdEvento,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>cdAcompanhante,System.String</value>
+          <value>dsAcompanhante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>flAtivo,System.Boolean</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>dependentes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select *
+	from tbAcompanhantes a
+where cdEvento = @cdEvento
+and cdParticipante = @cdParticipante
+and flAtivo = 1</SqlCommand>
+      </dependentes>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <NumberOfPass>DoublePass</NumberOfPass>
+  <Pages isList="true" count="2">
+    <Página1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados2 Ref="6" type="DataBand" isKey="true">
+          <AfterPrintEvent>this.Page1.Enabled = bool.Parse(IIF(qry1.acomp == 0,
+"false",
+"true").ToString());
+</AfterPrintEvent>
+          <Border>None;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,0.4,8,3.6</ClientRectangle>
+          <Components isList="true" count="4">
+            <CódigoBarras1 Ref="7" type="Stimulsoft.Report.BarCodes.StiBarCode" isKey="true">
+              <BackColor>White</BackColor>
+              <BarCodeType Ref="8" type="Stimulsoft.Report.BarCodes.StiEAN128bBarCodeType" isKey="true" />
+              <ClientRectangle>0.95,2.7,6.6,0.5</ClientRectangle>
+              <Code>{"00"+qry1.cdParticipante+qry1.cdCredencial}</Code>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold,Pixel</Font>
+              <ForeColor>Black</ForeColor>
+              <HorAlignment>Center</HorAlignment>
+              <Name>CódigoBarras1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <ShowLabelText>False</ShowLabelText>
+              <VertAlignment>Center</VertAlignment>
+            </CódigoBarras1>
+            <Texto2 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.3,7.8,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{IIF(qry1.noEtiqueta.Trim().ToUpper() != "", 
+     qry1.noEtiqueta.Trim().ToUpper(), 
+     oclsfuncoes.NomeReduzido(qry1.noParticipante.Trim().ToUpper()))}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Bottom</VertAlignment>
+            </Texto2>
+            <Texto3 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>0.95,3.2,6.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto3</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{"00"+qry1.cdParticipante+'-'+qry1.cdCredencial}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto3>
+            <Text2 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>0.1,1.3,7.8,1.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>0d079d4620934a509d7537d6938933db</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>{qry1.noInstituicao}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>qry1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados2</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </Dados2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>50045bf61bc54648b3b9cd51a338aeba</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <PageHeight>3.8</PageHeight>
+      <PageWidth>8</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="12" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+    <Page1 Ref="13" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="14" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanShrink>True</CanShrink>
+          <ClientRectangle>0,0.4,9,3.8</ClientRectangle>
+          <Components isList="true" count="5">
+            <Texto1 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.1,0.2,8.8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold</Font>
+              <Guid>2a3c64177d3044f4a961c7a6c131bbc1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto1</Name>
+              <Page isRef="13" />
+              <Parent isRef="14" />
+              <Text>{dependentes.noEtiqueta}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Bottom</VertAlignment>
+            </Texto1>
+            <CódigoBarras2 Ref="16" type="Stimulsoft.Report.BarCodes.StiBarCode" isKey="true">
+              <BackColor>White</BackColor>
+              <BarCodeType Ref="17" type="Stimulsoft.Report.BarCodes.StiEAN128bBarCodeType" isKey="true" />
+              <ClientRectangle>1.2,2.2,6.6,1</ClientRectangle>
+              <Code>{dependentes.cdAcompanhante+qry1.cdParticipante+qry1.cdCredencial}</Code>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold,Pixel</Font>
+              <ForeColor>Black</ForeColor>
+              <Guid>d904c4ad915d4f80a3aa50063ddfcc71</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Name>CódigoBarras2</Name>
+              <Page isRef="13" />
+              <Parent isRef="14" />
+              <ShowLabelText>False</ShowLabelText>
+              <VertAlignment>Center</VertAlignment>
+            </CódigoBarras2>
+            <Texto4 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1,3.3,7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>46b2b0d1150041a7ac2e418332d7a932</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto4</Name>
+              <Page isRef="13" />
+              <Parent isRef="14" />
+              <Text>{dependentes.cdAcompanhante+qry1.cdParticipante+'-'+qry1.cdCredencial}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto4>
+            <Texto5 Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.9,1.6,8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto5</Name>
+              <Page isRef="13" />
+              <Parent isRef="14" />
+              <Text>{IIF(qry1.noEtiqueta.Trim().ToUpper() != "", 
+     qry1.noEtiqueta.Trim().ToUpper(), 
+     qry1.noParticipante.Trim().ToUpper())}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Texto5>
+            <Texto6 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,1.2,3.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>aaf9e349759a46789114af588484a8af</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto6</Name>
+              <Page isRef="13" />
+              <Parent isRef="14" />
+              <Text>Acompanhate de:</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto6>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>dependentes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Guid>5ecfd6f5a00d4e9ca101212efe61ff2c</Guid>
+          <Name>Dados1</Name>
+          <Page isRef="13" />
+          <Parent isRef="13" />
+          <Sort isList="true" count="0" />
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>7b10864ee16c484b9fdee5c7dc27c694</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <PageHeight>4</PageHeight>
+      <PageWidth>9</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="21" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="22" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true">
+    <ShowDialog>False</ShowDialog>
+  </PrinterSettings>
+  <ReferencedAssemblies isList="true" count="10">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+    <value>cllEventos.dll</value>
+    <value>CLLFuncoes.dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>3/15/2014 4:17:53 PM</ReportChanged>
+  <ReportCreated>11/16/2010 9:54:32 PM</ReportCreated>
+  <ReportFile>D:\Desenvolvimento\ConfigCongresso\EventosFM\InscricoesWeb\relatorios\rptEtiqueta002105.mrt</ReportFile>
+  <ReportGuid>1f0cf7d8bdd94344b08f8f1f144c6a31</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+//using cllEventos;
+using CLLFuncoes;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+	{
+		CLLFuncoes.ClsFuncoes oclsfuncoes = new ClsFuncoes();
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

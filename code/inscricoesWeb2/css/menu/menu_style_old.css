@@ -1,0 +1,98 @@
+body, menubar, ul, li, a  {margin: 0; padding: 0;}
+body {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+a {text-decoration: none;}
+/*.container {
+    width: 90%;
+    max-width: 900px;
+    margin: 10px auto;
+}*/
+.toggleMenu {
+    display:  none;
+    background: #666;
+    padding: 10px 15px;
+    color: #fff;
+}
+.menubar {
+    list-style: none;
+     *zoom: 1;
+     background:#175e4c;
+}
+.menubar:before,
+.menubar:after {
+    content: " "; 
+    display: table; 
+}
+.menubar:after {
+    clear: both;
+}
+.menubar ul {
+    list-style: none;
+    width: 9em;
+}
+.menubar a {
+    padding: 10px 15px;
+    color:#fff;
+}
+.menubar li {
+    position: relative;
+}
+.menubar > li {
+    float: left;
+    border-top: 1px solid #104336;
+}
+.menubar > li > .parent {
+    background-image: url("img/downArrow.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.menubar > li > a {
+    display: block;
+}
+.menubar li  ul {
+    position: absolute;
+    left: -9999px;
+}
+.menubar > li.hover > ul {
+    left: 0;
+}
+.menubar li li.hover ul {
+    left: 100%;
+    top: 0;
+}
+.menubar li li a {
+    display: block;
+    background: #1d7a62;
+    position: relative;
+    z-index:100;
+    border-top: 1px solid #175e4c;
+}
+.menubar li li li a {
+    background:#249578;
+    z-index:200;
+    border-top: 1px solid #1d7a62;
+}
+
+@media screen and (max-width: 768px) {
+    .active {
+        display: block;
+    }
+    .menubar > li {
+        float: none;
+    }
+    .menubar > li > .parent {
+        background-position: 95% 50%;
+    }
+    .menubar li li .parent {
+        background-image: url("img/downArrow.png");
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+    }
+    .menubar ul {
+        display: block;
+        width: 100%;
+    }
+   .menubar > li.hover > ul , .menubar li li.hover ul {
+        position: static;
+    }
+
+}

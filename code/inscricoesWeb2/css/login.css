@@ -1,0 +1,75 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{
+	font-family:Verdana;
+	font-size:small}
+#container
+{
+	width: 500px;
+	height:500px;
+	margin:0 auto;
+	}
+#login{
+	width:500px;
+	border:2px solid #BFE8FF;
+	margin:150px auto;
+	background-image:url('../img/bg_login.jpg');
+	float:left;	}
+	
+#topo_login{
+	width:470px;
+	height:40px;
+	/*background:#DFF7DF;*/
+	text-align:left;
+	padding:15px;
+}
+#col_esq{
+	height: 200px;
+	margin:0;
+}
+#col_dir{
+	text-align:left;
+	padding:10px;
+	margin-top:10px;
+}
+#col_dir p{
+	line-height:17px;
+	padding:5px 0px 0px 0px;
+	margin:0px;
+	font-size:10px;
+}
+#col_dir .text{
+	width:200px;
+	height:20px;
+	border:1px solid silver;
+	font-size:15px;
+	font-weight:bold;
+	margin:0;
+}
+#entrar{
+	width:50px;
+	padding:5px 0px 0px 155px;
+	text-align:right
+}
+#entrar #btn_login{
+	border:1px solid gray;
+	font-size:10px;
+	height:25px;
+	width:60px;
+}
+
+#txtMsg{
+	
+	color:red;
+	font-size:12px;
+	padding:3px;
+	text-transform:uppercase;
+}
+.botoes
+{
+	border:1px solid black;
+	padding: 2px 0px;
+	text-transform:uppercase;
+	font-size:10px;
+}
+

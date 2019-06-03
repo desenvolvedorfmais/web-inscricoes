@@ -1,0 +1,691 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" 
+     %>
+
+
+<%--<!DOCTYPE html>--%><%--<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+    Namespace="System.Web.UI" TagPrefix="asp" %>
+<%@ Register Assembly="AjaxControls" Namespace="AjaxControls" TagPrefix="asp" %>--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head runat="server">
+    <title>Inscri&ccedil;&otilde;es Web</title>
+    <meta name="encoding" http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+    <meta name="KeyWords" content="sistema de credenciamento, sistema de credenciamento web, credenciamento, etiqueta, sistema de credenciamento com etiqueta, sistema de credenciamento com código de barras, tecnologia em eventos" />
+
+     <%--<meta http-equiv="x-ua-compatible" content="IE=9"/>--%>
+     <%--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />--%>
+    <%--<meta http-equiv="refresh" content="120" runat="server"/>--%>
+    
+    <link id="reset" href="css/reset.css" rel="reset" type="text/css" />
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    
+    <%--<link id="Link1" runat="server" rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link id="Link2" runat="server" rel="icon" href="img/favicon.ico" type="image/ico" />--%>
+    <link id="Estilo" href="css/StyleSheet2.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
+    <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu-v.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="css/menu/menu_style.css"/>
+   
+    <%--<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>--%>
+    <%--<script src="https://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>--%>
+    <%--<script src="https://ie7-js.googlecode.com/svn/version/2.0(beta)/src/IE7.js"></script>--%>
+
+    <%--<script type="text/javascript" src="../scripts/JSCFuncoes.js"></script>--%>
+    <script type="text/javascript" src="scripts/JSCFuncoes.js"></script>
+    <script type="text/javascript" language="JavaScript">
+    <!--
+        javascript: window.history.forward(1);
+    //-->
+    </script>
+   <%-- <script type="text/JavaScript">
+    <!--
+        function MM_preloadImages() { //v3.0
+            var d = document;
+            if (d.images) {
+                if (!d.MM_p)
+                    d.MM_p = new Array();
+
+                var i, j = d.MM_p.length, a = MM_preloadImages.arguments;
+                for (i = 0; i < a.length; i++)
+                    if (a[i].indexOf("#") != 0) {
+                        d.MM_p[j] = new Image;
+                        d.MM_p[j++].src = a[i];
+                    }
+            }
+        }
+
+        function MM_swapImgRestore() { //v3.0
+            var i, x, a = document.MM_sr;
+            for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++)
+                x.src = x.oSrc;
+        }
+
+        function MM_findObj(n, d) { //v4.01
+            var p, i, x;
+            if (!d)
+                d = document;
+            if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+                d = parent.frames[n.substring(p + 1)].document;
+                n = n.substring(0, p);
+            }
+            if (!(x = d[n]) && d.all)
+                x = d.all[n];
+            for (i = 0; !x && i < d.forms.length; i++)
+                x = d.forms[i][n];
+            for (i = 0; !x && d.layers && i < d.layers.length; i++)
+                x = MM_findObj(n, d.layers[i].document);
+            if (!x && d.getElementById)
+                x = d.getElementById(n);
+
+            return x;
+        }
+
+        function MM_swapImage() { //v3.0
+            var i, j = 0, x, a = MM_swapImage.arguments;
+            document.MM_sr = new Array;
+            for (i = 0; i < (a.length - 2); i += 3)
+                if ((x = MM_findObj(a[i])) != null) {
+                    document.MM_sr[j++] = x;
+                    if (!x.oSrc)
+                        x.oSrc = x.src;
+
+                    x.src = a[i + 2];
+                }
+        }
+
+        // Comma separated list of images to rotate 
+        var imgs = new Array('img/vazia18x18.png', 'img/vazia18x18.png', 'img/vazia18x18.png', 'img/vazia18x18.png', 'img/vazia18x18.png');
+        // delay in milliseconds between image swaps 1000 = 1 second 
+        var delay = 3500;
+        var counter = 0;
+
+        function preloadImgs() {
+            for (var i = 0; i < imgs.length; i++) {
+                MM_preloadImages(imgs[i]);
+            }
+        }
+
+        function randomImages() {
+            if (counter == (imgs.length)) {
+                counter = 0;
+            }
+            MM_swapImage('rotator', '', imgs[counter++]);
+            setTimeout('randomImages()', delay);
+        }
+
+        //function maximize() {
+        //    moveTo(-4, -4);
+        //    resizeTo(screen.availWidth + 8, screen.availHeight + 8);
+        //}
+    //-->
+    </script>--%>
+
+    
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <%--<script>
+        (function ($) {
+            $.lockfixed("#sidebar .menu", { offset: { top: 10, bottom: 410} });
+
+        })(jQuery);	
+    </script>--%>    <%--<script type="text/javascript" src="scripts/scrolltofixed.js"></script>  
+    <script type="text/javascript" src="scripts/scroll.js"></script>  --%>
+    <%--<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>--%><%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>--%><%--<script type="text/javascript" src="scripts/jquery.min.js"></script>--%>    <%--<script type="text/javascript" src="scripts/jquery-1.10.0.min.js"></script>--%>
+   
+     <%--<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>--%>
+
+    <script type="text/javascript" src="scripts/jquery.cj-object-scaler.min.js"></script>
+
+   
+    
+
+    <script type="text/javascript" src="scripts/jquery.lockfixed.js"></script>
+    
+    <script type="text/javascript" src="scripts/jquery.dd.min.js"></script>
+    <link id="Link3" href="css/dd.css" rel="stylesheet" type="text/css" />
+
+<%--    <script type="text/javascript" src="scripts/fadeslideshow.js">
+        /***********************************************
+        * Ultimate Fade In Slideshow v2.0- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+        * This notice MUST stay intact for legal use
+        * Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
+        ***********************************************/
+    </script>--%>
+
+
+    <script type="text/javascript" language="JavaScript">
+        function teste(){
+          if (confirm("Tem certeza que deseja sair dessa página")) {
+              return false;
+          } else {
+            return true;
+          }
+        }
+    </script>
+
+    
+
+    <%-- <script type="text/javascript" src="scripts/site.js"></script>--%>
+  <%--    
+<script type="text/javascript" language="JavaScript">
+function isMobile(){
+	var a = navigator.userAgent||navigator.vendor||window.opera;
+	if(/android|avantgo|blackberry|blazer|compal|elaine|fennec|hiptop|ip(hone|od|ad)|iris|kindle|lge |maemo|midp|mmp|mobile|o2|opera m(ob|in)i|palm( os)?|p(ixi|re)/|plucker|pocket|psp|smartphone|symbian|treo|up.(browser|link)|vodafone|wap|windows ce; (iemobile|ppc)|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw-(n|u)|c55/|capi|ccwa|cdm-|cell|chtm|cldc|cmd-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc-s|devi|dica|dmob|do(c|p)o|ds(12|-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(-|_)|g1 u|g560|gene|gf-5|g-mo|go(.w|od)|gr(ad|un)|haie|hcit|hd-(m|p|t)|hei-|hi(pt|ta)|hp( i|ip)|hs-c|ht(c(-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i-(20|go|ma)|i230|iac( |-|/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |/)|klon|kpt |kwc-|kyo(c|k)|le(no|xi)|lg( g|/(k|l|u)|50|54|e-|e/|-[a-w])|libw|lynx|m1-w|m3ga|m50/|ma(te|ui|xo)|mc(01|21|ca)|m-cr|me(di|rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|-([1-8]|c))|phil|pire|pl(ay|uc)|pn-2|po(ck|rt|se)|prox|psio|pt-g|qa-a|qc(07|12|21|32|60|-[2-7]|i-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55/|sa(ge|ma|mm|ms|ny|va)|sc(01|h-|oo|p-)|sdk/|se(c(-|0|1)|47|mc|nd|ri)|sgh-|shar|sie(-|m)|sk-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h-|v-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl-|tdg-|tel(i|m)|tim-|t-mo|to(pl|sh)|ts(70|m-|m3|m5)|tx-9|up(.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|xda(-|2|g)|yas-|your|zeto|zte-/i.test(a))
+		return true;
+	else
+		return false;
+}
+</script>--%>
+
+
+    <%--<script src="js/tinymce/tinymce.min.js"></script>
+    <script>
+        //tinymce.init({ selector: 'textarea' });
+
+        var max_chars = 500; //max characters
+        var max_for_html = 10000; //max characters for html tags
+        var allowed_keys = [8, 13, 16, 17, 18, 20, 33, 34, 35, 36, 37, 38, 39, 40, 46];
+        var chars_without_html = 0;
+
+        function alarmChars() {
+            if (chars_without_html > (max_chars - 25)) {
+                $('#chars_left').css('color', 'red');
+            } else {
+                $('#chars_left').css('color', 'gray');
+            }
+        }
+
+
+        tinymce.init({
+            // selector: 'textarea#teste',
+            mode: 'exact',
+            elements: 'ContentPlaceHolder1_teste,ctl00_ContentPlaceHolder1_txtPerfilB2B',
+            height: 250,
+            //max_chars: '10',
+            //charLimit: 10,
+            
+            theme: 'modern',
+
+            setup: function (ed) {
+                var limit = 515;
+                ed.on("KeyUp", function (ed, evt) {
+                    var chars = (tinyMCE.activeEditor.getContent()).replace(/(&lt;([^&gt;]+)&gt;)/ig,"").length;
+
+                    var key = ed.keyCode;
+                    if (allowed_keys.indexOf(key) != -1) {
+                        alarmChars();
+                        return;
+                    }
+
+                    var charcount = document.getElementById('charcount');
+                    if (chars <= limit)charcount.innerHTML =  limit-chars;
+                    if (chars >= limit){
+                        alert('Você atingiu o limite de caracteres.\n(You have reached the character limit.)');
+                        e.preventDefault();
+                    }
+                });
+                //ed.on("KeyDown", function (ed, evt) {
+                //    var chars = (tinyMCE.activeEditor.getContent()).replace(/(&lt;([^&gt;]+)&gt;)/ig, "").length;
+
+                //    var key = ed.keyCode;
+                //    if (allowed_keys.indexOf(key) != -1) {
+                //        alarmChars();
+                //        return;
+                //    }
+
+                //    var charcount = document.getElementById('charcount');
+                //    if(chars <= limit)charcount.innerHTML =  limit-chars;
+                //    if(chars >= limit){
+                //        alert('Você atingiu o limite de caracteres.\n(You have reached the character limit.)');
+                //        e.preventDefault();
+                //    }
+                //});
+            },
+
+            statusbar: false,
+            //setup: function (ed) {
+            //    ed.on("KeyDown", function (ed, evt) {
+            //        chars_without_html = $.trim(tinyMCE.activeEditor.getContent().replace(/(<([^>]+)>)/ig, "")).length;
+            //        chars_with_html = tinyMCE.activeEditor.getContent().length;
+            //        var key = ed.keyCode;
+
+            //        $('#chars_left').html(max_chars - chars_without_html);
+
+            //        if (allowed_keys.indexOf(key) != -1) {
+            //            alarmChars();
+            //            return;
+            //        }
+
+            //        if (chars_with_html > (max_chars + max_for_html)) {
+            //            ed.stopPropagation();
+            //            ed.preventDefault();
+            //        } else if (chars_without_html > max_chars - 1 && key != 8 && key != 46) {
+            //            alert('Limite de caracteres alcançado!\nCharacters limit!');
+            //            ed.stopPropagation();
+            //            ed.preventDefault();
+            //        }
+            //        alarmChars();
+            //    });
+            //},
+
+            //setup : function(ed) {
+            //    ed.addButton('Spellcheck', {
+            //        title : 'Spellcheck',
+            //        image : '/img/dict.png',
+            //        onclick : function() {
+            //            // Add you own code to execute something on click
+            //            $Spelling.SpellCheckInWindow('editors');
+            //        }
+            //    });
+
+            //    ed.on("KeyUp", function(ed,evt) {
+            //        whtml = tinyMCE.activeEditor.getContent();
+
+            //        without_html = whtml.replace(/(<([^>]+)>)/ig,"");
+            //        //without_html = without_html.replace(/&([A-za- z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);/ig,'$1');
+            //        without_html = without_html.replace(/&hellip;/ig,'...');
+            //        without_html = without_html.replace(/&rsquo;/ig,'\'');
+            //        without_html = $.trim(without_html.replace(/&([A-za-z]{2})(?:lig);/ig,'$1'));
+
+            //        chars_without_html = without_html.length;
+            //        chars_with_html    = whtml.length;
+
+            //        wordscount = without_html.split(/[ ]+/).length;  // Just to get the wordcount, in case...
+
+            //        var key = ed.keyCode;
+
+            //        $('#chars_left').html(max_chars - chars_without_html);
+
+            //        if(allowed_keys.indexOf(key) != -1){
+            //            alarmChars();
+            //            return;                                                         
+            //        }
+
+            //        if (chars_with_html > (max_chars + max_for_html)){
+            //            ed.stopPropagation();
+            //            ed.preventDefault();
+            //        }else if (chars_without_html > max_chars-1 && key != 8 && key != 46){
+            //            alert('Characters limit!');
+            //            ed.stopPropagation();
+            //            ed.preventDefault();
+            //        }
+            //        alarmChars();                                                   
+            //    }
+            //    );
+            //},
+
+            plugins: [
+                'advlist autolink lists link charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime nonbreaking save table contextmenu directionality',
+                'template paste textcolor colorpicker textpattern imagetools'
+            ],
+
+            toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            toolbar2: 'preview | forecolor backcolor | formatselect fontselect fontsizeselect',
+            image_advtab: true,
+            templates: [
+                { title: 'Test template 1', content: 'Test 1' },
+                { title: 'Test template 2', content: 'Test 2' }
+            ],
+            content_css: [
+                '//fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
+                '//www.tinymce.com/css/codepen.min.css'
+            ],
+            language: 'pt_BR'
+
+
+        });
+
+        //whtml = $("#paragraph1").text();
+
+        //without_html = whtml.replace(/(<([^>]+)>)/ig,"");
+        //without_html = without_html.replace(/&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);/ig,'$1');
+        //without_html = without_html.replace(/&hellip;/ig,'...');
+        //without_html = without_html.replace(/&rsquo;/ig,'\'');
+        //without_html = $.trim(without_html.replace(/&([A-za-z]{2})(?:lig);/ig,'$1'));
+
+        //chars_without_html = without_html.length;
+
+        //$('#chars_left').html(max_chars - chars_without_html);
+        //alarmChars();          
+
+        //chars_without_html = $.trim($("#description_edit").text().replace(/(<([^>]+)>)/ig, "")).length;
+        //$('#chars_left').html(max_chars - chars_without_html);
+        //alarmChars();
+
+    </script>--%>
+
+</head>
+<body >
+    
+    <form id="form1" runat="server" submitdisabledcontrols="true">
+    <div id="topo_consad">
+
+
+    </div>
+    <div id="topo" runat="server">
+            <%--<a id="tmp_link" href="http://congressoabrasel.com.br/index.php" target="_self" runat="server">--%>            <%--    <asp:Image ID="img_Topo" runat="server" />--%>            <%--Width="1240px" Height="130" />--%><%--</a>--%>            <%--<br />--%>            <%--<asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="true"
+                EnableScriptLocalization="true" CombineScripts="false">
+            </asp:ToolkitScriptManager>
+            <asp:ModalUpdateProgress ID="ModalUpdateProgress1" runat="server" BackgroundCssClass="modalProgressGreyBackground" DisplayAfter="0">
+                <progresstemplate>
+                    <div class="modalPopup">
+                        <br /><br />
+                            <img align="middle" src="img/loading.gif" /><br />
+                    <br /><br />
+                    </div>
+                
+                 </progresstemplate>
+            </asp:ModalUpdateProgress>--%>
+            
+            <div id="s1" class="stripe"  runat="server" visible="false">
+                <div class="wrapper">
+                    <a href="#ctl00_conteudo" id="btn-1" class="btn"></a>
+                </div>
+            </div>
+            <div id="s2" class="stripe"  runat="server" visible="false">
+                <div class="wrapper">
+                    <a href="mailto:departamentodemarketing@iesb.br" id="btn-2" class="btn"></a>
+                </div>
+            </div>
+
+            <%--<div id="conteudoDir"  style="right: 0px">
+                
+                <%--<img src="img/vazia18x18.png" alt="rotator" id="rotator" />-- %>
+                <div id="fadeshow1"> </div>
+            </div> --%>
+        </div>
+    <div id="geral" >
+        
+        <div id="smoothmenu1" runat="server"   visible="false"> <%--class="ddsmoothmenu"--%>
+           <a class="toggleMenu" href="#">Menu</a>
+           <ul id="linhamenuPTBR" runat="server" visible="true" class="menubar">
+               <li id="mnuCad" runat="server"><a href="#" >Cadastro</a>
+                   <ul> 
+                       <li id="mnuCadastro" runat="server"><a href="frmCadastroAuto.aspx" >Dados Cadastrais</a></li>
+                       <li id="mnuEnvioDoc" runat="server" visible="false"><a href="frmEnviarDocumento.aspx" >Enviar Documento</a></li>
+                       <li id="mnuEtiqueta" runat="server" visible="false"><a href="frmCredencial.aspx" >Imprimir Credencial</a></li>
+                       <li id="mnuSeguranca" runat="server"><a href="frmNovaSenha.aspx" >Alterar Senha</a></li>
+                   </ul>
+               </li>
+               
+               <li id="mnuInscr" runat="server" visible="true"><a href="#" >Inscrições</a>
+                   <ul>
+                       <li id="mnuAtividades" runat="server" visible="false"><a href="frmSelAtividades.aspx" >Inscreva-se</a></li>               
+                       <li id="mnuPedidos" runat="server" visible="false"><a href="#" >Acompanhar Inscrição</a>
+                           <ul> 
+                               <li id="mnuPedidosListas" runat="server"><a href="frmListarPedidos.aspx" >Pedidos de Inscrição</a></li>
+                               <li id="mnuBoletos" runat="server" visible="false"><a href="frmListaBoletosPedido.aspx" >Listar Boletos</a></li>
+                               <li id="mnuDadosRecibos" runat="server" visible="false"><a href="frmDadosRecibo.aspx" >Dados para Recibo</a></li>
+                           </ul>               
+                       </li>
+                       <li id="mnuInscricoes" runat="server" visible="false"><a href="frmAtividadesParticipante.aspx" >Minhas Inscrições/Atividades</a></li>
+                   </ul>
+               </li>              
+               
+               <li id="mnuCompras" runat="server" visible="false"><a href="#" >Compras</a>
+                   <ul>
+                       <li id="mnuComprar" runat="server" visible="false"><a href="frmSelAtividades.aspx" >Comprar</a></li>               
+                       <!--<li id="Li3" runat="server" visible="false"><a href="#" >Acompanhar Inscrição</a>
+                           <ul> 
+                               <li id="Li4" runat="server"><a href="frmListarPedidos.aspx" >Pedidos de Inscrição</a></li>
+                               <li id="Li5" runat="server" visible="false"><a href="frmListaBoletosPedido.aspx" >Listar Boletos</a></li>
+                               <li id="Li6" runat="server" visible="false"><a href="frmDadosRecibo.aspx" >Dados para Recibo</a></li>
+                           </ul>               
+                       </li>-->
+                       <li id="mnuMinhasCompras" runat="server" visible="false"><a href="frmAtividadesParticipante.aspx" >Minhas Compras</a></li>
+                   </ul>
+               </li>
+
+               <li id="mnuMeeting" runat="server" visible="false"><a href="#" >Meeting (B2B)</a>
+                   <ul> 
+                       <li id="mnuMeetingPerfil" runat="server" ><a href="frmMeetingPerfil.aspx" >Perfil</a></li>
+                       <li id="mnuMeetingAgenda" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Reuniões Agendadas</a></li>
+                       <li id="mnuMeetingConvites" runat="server" visible="false"><a href="#" >Convites Para Reunião</a>
+                           <ul>
+                               <li id="mnuMeetingConvitesNovo" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >Novo Convite</a></li>
+                               <li id="mnuMeetingConvitesEnviados" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Convites Enviados</a></li>
+                               <li id="mnuMeetingConvitesRecebidos" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Convites Recebidos</a></li>
+                           </ul>
+                       </li>
+                   </ul>               
+               </li>             
+               
+               <li id="mnuTrabalhos" runat="server" visible="false"><a href="frmTrabalhosLista.aspx" >Meus Trabalhos</a>
+                   <%--<ul> 
+                       <li id="Li2" runat="server" ><a href="frmMeetingPerfil.aspx" >Perfil</a></li>
+                       <li id="Li3" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Reuniões Agendadas</a></li>
+                       <li id="Li4" runat="server" visible="false"><a href="#" >Convites Para Reunião</a>
+                           <ul>
+                               <li id="Li5" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >Novo Convite</a></li>
+                               <li id="Li6" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Convites Enviados</a></li>
+                               <li id="Li7" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Convites Recebidos</a></li>
+                           </ul>
+                       </li>
+                   </ul>              --%> 
+               </li>
+               
+               <li id="mnuSair" runat="server"><a href="frmSessaoExpirada.aspx" >Sair</a></li>
+               
+           </ul>
+           
+            <ul id="linhamenuENUS" runat="server" visible="false" class="menubar">
+               <li id="mnuCadENUS" runat="server"><a href="#" >Registration</a>
+                   <ul> 
+                       <li id="mnuCadastroENUS" runat="server"><a href="frmCadastroAuto.aspx" >Registration Information</a></li>
+                       <li id="mnuEnvioDocENUS" runat="server" visible="false"><a href="frmEnviarDocumento.aspx" >Send Document</a></li>
+                       <li id="mnuEtiquetaENUS" runat="server" visible="false"><a href="frmCredencial.aspx" >Print Credential</a></li>
+                       <li id="mnuSegurancaENUS" runat="server"><a href="frmNovaSenha.aspx" >Alter Password</a></li>
+                   </ul>
+               </li>
+               
+               <li id="mnuInscrENUS" runat="server" visible="true"><a href="#" >Inscriptions</a>
+                   <ul>
+                       <li id="mnuAtividadesENUS" runat="server" visible="false"><a href="frmSelAtividades.aspx" >Sign up</a></li>               
+                       <li id="mnuPedidosENUS" runat="server" visible="false"><a href="#" >Monitor registration</a>
+                           <ul> 
+                               <li id="mnuPedidosListasENUS" runat="server"><a href="frmListarPedidos.aspx" >Registration Requests</a></li>
+                               <li id="mnuBoletosENUS" runat="server" visible="false"><a href="frmListaBoletosPedido.aspx" >List Boletos</a></li>
+                               <li id="mnuDadosRecibosENUS" runat="server" visible="false"><a href="frmDadosRecibo.aspx" >Change Data Receipt</a></li>
+                           </ul>               
+                       </li>
+                       <li id="mnuInscricoesENUS" runat="server" visible="false"><a href="frmAtividadesParticipante.aspx" >My Enrollments</a></li>
+                   </ul>
+               </li>              
+               
+               <li id="mnuMeetingENUS" runat="server" visible="false"><a href="#" >Meeting (B2B)</a>
+                   <ul> 
+                       <li id="mnuMeetingPerfilENUS" runat="server" ><a href="frmMeetingPerfil.aspx" >Profile</a></li>
+                       <li id="mnuMeetingAgendaENUS" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Meetings Scheduled</a></li>
+                       <li id="mnuMeetingConvitesENUS" runat="server" visible="false"><a href="#" >Invitations Meeting</a>
+                           <ul>
+                               <li id="mnuMeetingConvitesNovoENUS" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >New Invitation</a></li>
+                               <li id="mnuMeetingConvitesEnviadosENUS" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Invitations Sent</a></li>
+                               <li id="mnuMeetingConvitesRecebidosENUS" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Invitations Received</a></li>
+                           </ul>
+                       </li>
+                   </ul>               
+               </li>             
+               
+               <li id="mnuTrabalhosENUS" runat="server" visible="false"><a href="frmTrabalhosLista.aspx" >My Papers</a>
+                   <%--<ul> 
+                       <li id="Li2" runat="server" ><a href="frmMeetingPerfil.aspx" >Perfil</a></li>
+                       <li id="Li3" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Reuniões Agendadas</a></li>
+                       <li id="Li4" runat="server" visible="false"><a href="#" >Convites Para Reunião</a>
+                           <ul>
+                               <li id="Li5" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >Novo Convite</a></li>
+                               <li id="Li6" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Convites Enviados</a></li>
+                               <li id="Li7" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Convites Recebidos</a></li>
+                           </ul>
+                       </li>
+                   </ul>              --%> 
+               </li>
+               
+               <li id="mnuSairENUS" runat="server"><a href="frmSessaoExpirada.aspx" >Quit</a></li>
+               
+           </ul>
+            
+           
+            <ul id="linhamenuESP" runat="server" visible="false" class="menubar">
+               <li id="mnuCadESP" runat="server"><a href="#" >Registro</a>
+                   <ul> 
+                       <li id="mnuCadastroESP" runat="server"><a href="frmCadastroAuto.aspx" >Datos</a></li>
+                       <li id="mnuEnvioDocESP" runat="server" visible="false"><a href="frmEnviarDocumento.aspx" >Enviar Documento</a></li>
+                       <li id="mnuEtiquetaESP" runat="server" visible="false"><a href="frmCredencial.aspx" >Imprimir Credencial</a></li>
+                       <li id="mnuSegurancaESP" runat="server"><a href="frmNovaSenha.aspx" >Alterar Contraseña</a></li>
+                   </ul>
+               </li>
+               
+               <li id="mnuInscrESP" runat="server" visible="true"><a href="#" >Inscripciones</a>
+                   <ul>
+                       <li id="mnuAtividadesESP" runat="server" visible="false"><a href="frmSelAtividades.aspx" >Inscribirse</a></li>               
+                       <li id="mnuPedidosESP" runat="server" visible="false"><a href="#" >Acompañar inscripción</a>
+                           <ul> 
+                               <li id="mnuPedidosListasESP" runat="server"><a href="frmListarPedidos.aspx" >Pedidos de inscripción</a></li>
+                               <li id="mnuBoletosESP" runat="server" visible="false"><a href="frmListaBoletosPedido.aspx" >Boletos Lista</a></li>
+                               <li id="mnuDadosRecibosESP" runat="server" visible="false"><a href="frmDadosRecibo.aspx" >Alterar datos del recibo</a></li>
+                           </ul>               
+                       </li>
+                       <li id="mnuInscricoesESP" runat="server" visible="false"><a href="frmAtividadesParticipante.aspx" >Mis Suscripciones / Actividades</a></li>
+                   </ul>
+               </li>              
+               
+               <li id="mnuMeetingESP" runat="server" visible="false"><a href="#" >Reunión (B2B)</a>
+                   <ul> 
+                       <li id="mnuMeetingPerfilESP" runat="server" ><a href="frmMeetingPerfil.aspx" >Perfil</a></li>
+                       <li id="mnuMeetingAgendaESP" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Reuniones Programadas</a></li>
+                       <li id="mnuMeetingConvitesESP" runat="server" visible="false"><a href="#" >Invitaciones a reuniones</a>
+                           <ul>
+                               <li id="mnuMeetingConvitesNovoESP" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >Invitación Nueva</a></li>
+                               <li id="mnuMeetingConvitesEnviadosESP" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Invitaciones Enviadas</a></li>
+                               <li id="mnuMeetingConvitesRecebidosESP" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Invitaciones Recibidas</a></li>
+                           </ul>
+                       </li>
+                   </ul>               
+               </li>            
+               
+               <li id="mnuTrabalhosESP" runat="server" visible="false"><a href="frmTrabalhosLista.aspx" >Mis Trabajos</a>
+                   <%--<ul> 
+                       <li id="Li2" runat="server" ><a href="frmMeetingPerfil.aspx" >Perfil</a></li>
+                       <li id="Li3" runat="server" visible="false"><a href="frmMeetingAgenda.aspx" >Reuniões Agendadas</a></li>
+                       <li id="Li4" runat="server" visible="false"><a href="#" >Convites Para Reunião</a>
+                           <ul>
+                               <li id="Li5" runat="server" visible="true"><a href="frmMeetingParticipantes.aspx" >Novo Convite</a></li>
+                               <li id="Li6" runat="server" visible="true"><a href="frmMeetingConvitesEnviados.aspx" >Convites Enviados</a></li>
+                               <li id="Li7" runat="server" visible="true"><a href="frmMeetingConvitesRecebidos.aspx" >Convites Recebidos</a></li>
+                           </ul>
+                       </li>
+                   </ul>              --%> 
+               </li>
+               
+               <li id="mnuSairESP" runat="server"><a href="frmSessaoExpirada.aspx" >Salir</a></li>
+               
+           </ul>
+        </div>
+
+        
+
+        <div id="conteudo" runat="server">
+            <%--<div id="conteudoEsq"  style="left: 0px; top: 0px">
+                <asp:Menu ID="Menu1" runat="server" OnMenuItemClick="Menu1_MenuItemClick" Width="152px"
+                    Visible="False">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/frmCadastroAuto.aspx" Text=" Dados Cadastrais" Value="Cadastro">
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/frmSelAtividades.aspx" Text=" Inscreva-se"
+                            Value="Inscreva-se"></asp:MenuItem>
+                        <asp:MenuItem Text="Acompanhar Inscrição" Value="Meus Pedidos" NavigateUrl="~/frmListarPedidos.aspx">
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/frmDadosRecibo.aspx" Text="Alterar Dados Recibo" 
+                            Value="Alterar Dados Recibo"></asp:MenuItem>
+                        <asp:MenuItem Text="Inscri&#231;&#245;es/Matr&#237;culas" Value="Minhas Inscri&#231;&#245;es/Matr&#237;culas"
+                            NavigateUrl="~/frmAtividadesParticipante.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Alterar Senha" Value="Alterar Senha" NavigateUrl="~/frmNovaSenha.aspx">
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                <br />
+                <br />
+                <h4>
+                    <asp:Label ID="lblRealizacao" runat="server" Text="Realização" Font-Size="16px"></asp:Label></h4>
+                <p>
+                    <asp:Image ID="imgRealizacao" runat="server" />&nbsp;</p>
+                <p>
+                    &nbsp;</p>
+            </div>--%>
+            <div id="conteudo_meio" >
+                <%--<div id="listras" runat="server">
+                </div>--%>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                
+            </div>
+            <%--<div id="conteudoDir"  style="right: 5px">
+                
+                <img src="img/vazia18x18.png" alt="rotator" id="rotator" />
+                <div id="fadeshow1"> </div>
+            </div>--%>
+            <div id="baixo_publicidade2">
+                
+                <asp:Label ID="lblEspacoHtmlPatrocinadores2" runat="server" Visible="False"></asp:Label>
+                
+            </div>
+        </div>
+        
+            
+    </div>
+    <div id="baixo_publicidade">
+                
+                <asp:Label ID="lblEspacoHtmlPatrocinadores" runat="server" Visible="False"></asp:Label>
+                
+            </div>
+    <div id="rodape">
+        
+        <asp:Image ID="LogoF" runat="server" ImageUrl="~/img/etiqueta_fm.jpg" TabIndex="10" />&nbsp;
+        <br />
+        
+        
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
+                <asp:Timer ID="Timer1" runat="server" Interval="900000" ontick="Timer1_Tick">
+                </asp:Timer>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer1" />
+            </Triggers>
+        </asp:UpdatePanel>
+    </div>
+    
+    
+    
+    </form>
+
+    <script type="text/javascript" src="scripts/menu_script.js"></script>
+    <script type="text/javascript" src="scripts/global.js"></script>
+
+    <%--<script type="text/javascript">
+
+        $('#reload').click(function () {
+
+            location.reload();
+
+        });
+
+        $(window).bind('beforeunload', function () {
+            return '>>>>>Before You Go<<<<<<<< \n Your custom message go here';
+        });
+ 
+</script>--%>
+    </body>
+</html>

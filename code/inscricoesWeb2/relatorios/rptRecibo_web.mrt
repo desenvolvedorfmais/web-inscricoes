@@ -1,0 +1,1526 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnn Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnn</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=False;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventos_FM;User ID=sa</ConnectionString>
+        <Name>cnn</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnn>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <ReciboCursos Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>ReciboCursos</Alias>
+        <Columns isList="true" count="8">
+          <value>cdRecibo,System.String</value>
+          <value>cdPedido,System.String</value>
+          <value>cdAtividade,System.String</value>
+          <value>vlUnitario,System.Decimal</value>
+          <value>vlUnitarioDesconto,System.Decimal</value>
+          <value>noTitulo,System.String</value>
+          <value>vlQuantidade,System.Int32</value>
+          <value>noProfessor,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>ReciboCursos</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdRecibo,,22,12</value>
+        </Parameters>
+        <SqlCommand>SELECT r.cdRecibo,
+	ra.*,
+       atv.noTitulo,
+   prof.noProfessor
+FROM  tbRecibos r
+join  tbRecibosAtividades ra
+  on  r.cdRecibo = ra.cdRecibo
+join  tbAtividades atv
+  on  r.cdEvento = atv.cdEvento
+ and  ra.cdAtividade = atv.cdAtividade  
+LEFT JOIN tbProfessoresAtividades ap
+  on atv.cdAtividade = ap.cdAtividade
+left join tbProfessores prof
+  on ap.cdProfessor = prof.cdProfessor
+where r.cdRecibo = @cdRecibo</SqlCommand>
+      </ReciboCursos>
+      <Recibos Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Recibos</Alias>
+        <Columns isList="true" count="116">
+          <value>cdEvento,System.String</value>
+          <value>cdRecibo,System.String</value>
+          <value>vlRecibo,System.Decimal</value>
+          <value>dtRecibo,System.DateTime</value>
+          <value>vlDesconto,System.Decimal</value>
+          <value>vlAproveitamentoCredito,System.Decimal</value>
+          <value>tpPagamento,System.String</value>
+          <value>dsDocumentopagamento,System.String</value>
+          <value>dsObservacaopagamento,System.String</value>
+          <value>cdOperador,System.String</value>
+          <value>cdOperadordesconto,System.String</value>
+          <value>flEstorno,System.Boolean</value>
+          <value>dtEstorno,System.DateTime</value>
+          <value>cdOperadorEstorno,System.String</value>
+          <value>cdPedido,System.String</value>
+          <value>cdPedido1,System.String</value>
+          <value>cdEvento1,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>tpPedido,System.String</value>
+          <value>dtPedido,System.DateTime</value>
+          <value>vlTotalPedido,System.Decimal</value>
+          <value>flPago,System.Boolean</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>cdEvento2,System.String</value>
+          <value>cdParticipante1,System.String</value>
+          <value>cdCredencial,System.String</value>
+          <value>dtCredencial,System.DateTime</value>
+          <value>cdCategoria,System.String</value>
+          <value>noParticipante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsDocIdentificador,System.String</value>
+          <value>dsEmail,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>noBairro,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noPais,System.String</value>
+          <value>dsFone1,System.String</value>
+          <value>dsFone2,System.String</value>
+          <value>dsFone3,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>noCargo,System.String</value>
+          <value>noAreaAtuacao,System.String</value>
+          <value>dsSexo,System.String</value>
+          <value>dsNascimento,System.String</value>
+          <value>dsObservacoes,System.String</value>
+          <value>dsAuxiliar1,System.String</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>dsAuxiliar3,System.String</value>
+          <value>dsAuxiliar4,System.String</value>
+          <value>dsAuxiliar5,System.String</value>
+          <value>dsAuxiliar6,System.String</value>
+          <value>dsAuxiliar7,System.String</value>
+          <value>dsAuxiliar8,System.String</value>
+          <value>dsAuxiliar9,System.String</value>
+          <value>dsAuxiliar10,System.String</value>
+          <value>dsAuxiliar11,System.String</value>
+          <value>dsAuxiliar12,System.String</value>
+          <value>dsAuxiliar13,System.String</value>
+          <value>dsAuxiliar14,System.String</value>
+          <value>dsAuxiliar15,System.String</value>
+          <value>dsAuxiliar16,System.String</value>
+          <value>dsAuxiliar17,System.String</value>
+          <value>dsAuxiliar18,System.String</value>
+          <value>dsAuxiliar19,System.String</value>
+          <value>flAtivo1,System.Boolean</value>
+          <value>dtCadastro,System.DateTime</value>
+          <value>cdEvento3,System.String</value>
+          <value>cdCategoria1,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>flPagamento,System.Boolean</value>
+          <value>vlPagamento,System.Decimal</value>
+          <value>flCertificado,System.Boolean</value>
+          <value>flAtividades,System.Boolean</value>
+          <value>flMaterial,System.Boolean</value>
+          <value>flRefeicao,System.Boolean</value>
+          <value>flCortesias,System.Boolean</value>
+          <value>flDescontos,System.Boolean</value>
+          <value>flSorteio,System.Boolean</value>
+          <value>flQuestionario,System.Boolean</value>
+          <value>flAtivo2,System.Boolean</value>
+          <value>noOperador,System.String</value>
+          <value>tpPagamento1,System.String</value>
+          <value>dsNomeRecibo,System.String</value>
+          <value>nuCEPRecibo,System.String</value>
+          <value>dsEnderecoRecibo,System.String</value>
+          <value>noBairroRecibo,System.String</value>
+          <value>noCidadeRecibo,System.String</value>
+          <value>dsUFRecibo,System.String</value>
+          <value>nuCPFCNPJRecibo,System.String</value>
+          <value>dsInscricaoEstadualRecibo,System.String</value>
+          <value>dsSenhaWeb,System.String</value>
+          <value>flEmailValidado,System.Boolean</value>
+          <value>flSMS_BV_Enviado,System.Boolean</value>
+          <value>flVisivelWeb,System.Boolean</value>
+          <value>flEnviarSMS,System.Boolean</value>
+          <value>vlPagamento1,System.Decimal</value>
+          <value>tpPagamento2,System.String</value>
+          <value>vlPagamento2,System.Decimal</value>
+          <value>dtVencimentoPedido,System.DateTime</value>
+          <value>qtdParcelas,System.Int32</value>
+          <value>noBandeira,System.String</value>
+          <value>flSMS_FoneValido,System.Boolean</value>
+          <value>cdPatrocinador,System.String</value>
+          <value>dsCampoExtraPreCad,System.String</value>
+          <value>tpInscrPatrocinada,System.String</value>
+          <value>flCriticar,System.Boolean</value>
+          <value>flControlado,System.Boolean</value>
+          <value>flConfirmacaoCadWeb,System.Boolean</value>
+          <value>flVerificarPreCadastro,System.Boolean</value>
+          <value>tpVerificacaoPreCadastro,System.String</value>
+          <value>dsMensagemPreCadastro,System.String</value>
+          <value>flPatrocinada,System.Boolean</value>
+          <value>dsDocumentopagamento2,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Recibos</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdRecibo,,22,12</value>
+        </Parameters>
+        <SqlCommand>SELECT r.*, ped.*, p.*, cat.*, op.noOperador
+  FROM tbRecibos r 
+  JOIN tbPedidos ped
+    on r.cdEvento = ped.cdEvento
+   and r.cdPedido = ped.cdPedido
+  join tbParticipantes p
+    on r.cdEvento = p.cdEvento
+   and ped.cdParticipante = p.cdParticipante
+  join tbCategorias cat
+    on r.cdEvento = cat.cdEvento
+   and p.cdCategoria = cat.cdCategoria  
+  join tbOperadores op
+    on r.cdEvento = op.cdEvento
+   and r.cdOperador = op.cdOperador  
+ where r.cdRecibo = @cdRecibo</SqlCommand>
+      </Recibos>
+      <Evento Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Evento</Alias>
+        <Columns isList="true" count="62">
+          <value>cdEvento,System.String</value>
+          <value>cdCliente,System.String</value>
+          <value>noEvento,System.String</value>
+          <value>dsEvento,System.String</value>
+          <value>dtInicioEvento,System.DateTime</value>
+          <value>dtFinalEvento,System.DateTime</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>flEventoComRecebimentos,System.Boolean</value>
+          <value>dsSenha,System.String</value>
+          <value>dsEmailEvento,System.String</value>
+          <value>flSMS_BV,System.Boolean</value>
+          <value>dsSMS_Remetente,System.String</value>
+          <value>dsSMS_Mensagem_BV,System.String</value>
+          <value>cdEvento1,System.String</value>
+          <value>imgBanner,System.Byte[]</value>
+          <value>imgLogo,System.Byte[]</value>
+          <value>cdEvento2,System.String</value>
+          <value>nomRealizador,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsInscricaoEstadual,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>nomBairro,System.String</value>
+          <value>nomCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>nuFone,System.String</value>
+          <value>nuFax,System.String</value>
+          <value>dsSite,System.String</value>
+          <value>dsEmail,System.String</value>
+          <value>flEmiteRecibo,System.Boolean</value>
+          <value>dtAberturaInscrWeb,System.DateTime</value>
+          <value>dtFechamentoInscrWeb,System.DateTime</value>
+          <value>flSuspenderInscricaoWeb,System.Boolean</value>
+          <value>flSuspenderInscricaoLocal,System.Boolean</value>
+          <value>flEnviarMensagensEmail,System.Boolean</value>
+          <value>dsCorpoMensagensEmail,System.String</value>
+          <value>flAutenticacaoWeb,System.Boolean</value>
+          <value>dsCampoAutenticacao,System.String</value>
+          <value>dsLinkRedirecionamento,System.String</value>
+          <value>dsInformacoesPreviasWeb,System.String</value>
+          <value>dsInformacoesCompletasWeb,System.String</value>
+          <value>dsSMTPEmailMensagens,System.String</value>
+          <value>dsEmailMensagens,System.String</value>
+          <value>dsSenhaEmailMensagens,System.String</value>
+          <value>flMostrarRealizador,System.Boolean</value>
+          <value>dsCSSEstiloWeb,System.String</value>
+          <value>nuDiasPrimeiroVencimento,System.Int32</value>
+          <value>codCobreBem,System.String</value>
+          <value>flLiberarCertificacaoWeb,System.Boolean</value>
+          <value>dsCnn,System.String</value>
+          <value>flLiberarCPFCoringa,System.Boolean</value>
+          <value>flMostrarMenu,System.Boolean</value>
+          <value>dtLimitePagamentoBoleto,System.DateTime</value>
+          <value>flImprimirCertificadoCredenciamento,System.Boolean</value>
+          <value>dsSMSCadastro,System.String</value>
+          <value>dsSMSConfirmaRecebimento,System.String</value>
+          <value>dsSMSConfirmaCadastro,System.String</value>
+          <value>dsSMSCancelamentoPedido,System.String</value>
+          <value>flPermitirDuplicidadeEmail,System.Boolean</value>
+          <value>flMostrarAtivQdoUmItem,System.Boolean</value>
+          <value>dsFormaGuardarMunicipio,System.String</value>
+          <value>noResponsavelFinanceiro,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Evento</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select *
+from dbo.tbClientesEventos evto
+LEFT join dbo.tbEventosImagens img
+  on evto.cdEvento = img.cdEvento
+LEFT join dbo.tbDadosEvento dad
+  on evto.cdEvento = dad.cdEvento
+where evto.cdEvento = @cdEvento  </SqlCommand>
+      </Evento>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="20">
+        <RodapéPágina1 Ref="7" type="PageFooterBand" isKey="true">
+          <Border>Top;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,24,19,3.7</ClientRectangle>
+          <Components isList="true" count="12">
+            <Texto14 Ref="8" type="Text" isKey="true">
+              <Border>Left, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,19,3.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Guid>ab09a6b185354a0ab61be6b6f6291692</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto14</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+            </Texto14>
+            <Text31 Ref="9" type="Text" isKey="true">
+              <Border>All;Black;1;Solid;False;4;Black</Border>
+              <Brush>[165:165:165]</Brush>
+              <ClientRectangle>14.4,2,4.4,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,17,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+            </Text31>
+            <Texto25 Ref="10" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.6,2.1,3.4,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>92947ccb90f24dadb62244bc844dd14a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto25</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>VALOR DO RECIBO</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto25>
+            <Texto1 Ref="11" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.6,2.6,3.8,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,16,Bold| Italic</Font>
+              <Guid>42e8f884701e4d5eb71add40f24c96bc</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{Format("{0:N2}",
+Recibos.vlRecibo - 
+Recibos.vlDesconto)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="12" type="CurrencyFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>0</NegativePattern>
+                <PositivePattern>0</PositivePattern>
+              </TextFormat>
+              <VertAlignment>Center</VertAlignment>
+            </Texto1>
+            <Texto23 Ref="13" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16,1.5,2.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>20a25472b14e4a298948f250ea007679</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto23</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{Format("{0:N2}", Recibos.vlDesconto)}(-)</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="14" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Texto23>
+            <Texto24 Ref="15" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>10,1.5,5.9,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>36935d344a9f47ce8a13082f39f65ac6</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto24</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Outros descontos:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto24>
+            <Texto15 Ref="16" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>10,1.1,5.9,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>0a1e29ef58824fb09bf2dada89930b89</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto15</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Sub-total em Atividades:</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto15>
+            <Texto16 Ref="17" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16,1.1,2.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>2d6bd0c75b084c0a89a3131823ad611f</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto16</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{Format("{0:N2}",
+        Sum(DataBand1,ReciboCursos.vlUnitario - ReciboCursos.vlUnitarioDesconto))}(+)</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="18" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Texto16>
+            <Texto13 Ref="19" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>14,0.6,3.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>420975af0b59463a9dad9ae23df372ed</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto13</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>RESUMO DA FATURA</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto13>
+            <Image1 Ref="20" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.6,8.8,2.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>{"http://fazendomais.com/imagensgeral/AssinaturaRecibo_"+Evento.cdEvento+".jpg"}</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+            </Image1>
+            <Text7 Ref="21" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3.8,0.1,9.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>628d8f2dad7f46509806f4d243246524</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>{Evento.noResponsavelFinanceiro}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text7>
+            <Text30 Ref="22" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,0.1,3.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>25a7ac87b7414cffac77e9e9cba05b77</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>RESPOSNSÁVEL FINANCEIRO:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text30>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>RodapéPágina1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </RodapéPágina1>
+        <Text65 Ref="23" type="Text" isKey="true">
+          <Brush>EmptyBrush</Brush>
+          <ClientRectangle>30.1,0,4.9,0.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,7,Bold| Italic</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text65</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <TextBrush>Black</TextBrush>
+          <TextFormat Ref="24" type="DateFormat" isKey="true">
+            <StringFormat>F</StringFormat>
+          </TextFormat>
+        </Text65>
+        <HeaderBand1 Ref="25" type="HeaderBand" isKey="true">
+          <Border>Top, Left, Right;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanGrow>False</CanGrow>
+          <ClientRectangle>0,0.4,19,7.9</ClientRectangle>
+          <Components isList="true" count="61">
+            <Text1 Ref="26" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>4.2,0.2,11.9,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Evento.nomRealizador}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <Text2 Ref="27" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>15.8,0.8,2.9,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>RECIBO Nº</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text4 Ref="28" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanBreak>True</CanBreak>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>4.2,0.7,10.8,1.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>CNPJ/MF: {IIF(Evento.nuCPFCNPJ.Trim() == "", "",
+ IIF(Evento.nuCPFCNPJ.Trim().Length == 11,
+     Evento.nuCPFCNPJ.Substring(0,3) + "." +
+     Evento.nuCPFCNPJ.Substring(3,3) + "." +
+     Evento.nuCPFCNPJ.Substring(6,3) + "-" +
+     Evento.nuCPFCNPJ.Substring(9,2), 
+     
+     Evento.nuCPFCNPJ.Substring(0,2) + "." +
+     Evento.nuCPFCNPJ.Substring(2,3) + "." +
+     Evento.nuCPFCNPJ.Substring(5,3) + "/" +
+     Evento.nuCPFCNPJ.Substring(8,4) + "-" +
+     Evento.nuCPFCNPJ.Substring(12,2) ))}             IE: {Evento.dsInscricaoEstadual}
+{Evento.dsEndereco+", "+Evento.nomBairro+", "+Evento.nomCidade+" - "+Evento.dsUF+", CEP "+IIF(Evento.nuCEP.Trim() != "",
+Evento.nuCEP.Substring(0,2) +
+"." + 
+Evento.nuCEP.Substring(2,3)+
+"-" + 
+Evento.nuCEP.Substring(5,3),"")}
+Fone: {IIF(Evento.nuFone.Trim() != "", "(" + 
+Evento.nuFone.Substring(0,2) + ")"+ 
+Evento.nuFone.Substring(2,4)+"." + 
+Evento.nuFone.Substring(6,4),"")} 
+{Evento.dsSite} / {Evento.dsEmail}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text4>
+            <Text5 Ref="29" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,2.4,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>NOME</Text>
+              <TextBrush>Black</TextBrush>
+            </Text5>
+            <Text6 Ref="30" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16.4,2.4,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>EMISSÃO</Text>
+              <TextBrush>Black</TextBrush>
+            </Text6>
+            <Text8 Ref="31" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,3.5,10,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.noParticipante + " - " + Recibos.noCategoria}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text8>
+            <Text9 Ref="32" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16.5,2.7,2.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Format("{0:dd/MM/yyyy}", Recibos.dtRecibo)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="33" type="DateFormat" isKey="true" />
+            </Text9>
+            <Text10 Ref="34" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,3.2,9.2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>INSCRIÇÃO REALIZADA PARA: (Participante/Categoria)</Text>
+              <TextBrush>Black</TextBrush>
+            </Text10>
+            <Text11 Ref="35" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,2.7,16.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.dsNomeRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text11>
+            <Text12 Ref="36" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.8,3.2,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>CPF/CNPJ</Text>
+              <TextBrush>Black</TextBrush>
+            </Text12>
+            <Text13 Ref="37" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.8,3.5,4.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{oclsfuncoes.CPFCNPJMascarar(Recibos.nuCPFCNPJRecibo.Trim())}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text13>
+            <Text14 Ref="38" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,4,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>ENDEREÇO</Text>
+              <TextBrush>Black</TextBrush>
+            </Text14>
+            <Text15 Ref="39" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,4.3,18.8,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.dsEnderecoRecibo.Trim()}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text15>
+            <Text16 Ref="40" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,4.8,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>BAIRRO</Text>
+              <TextBrush>Black</TextBrush>
+            </Text16>
+            <Text17 Ref="41" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,5.1,6.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.noBairroRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text17>
+            <Text18 Ref="42" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>7.2,4.8,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>CIDADE</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text19 Ref="43" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>7.2,5.1,5.1,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.noCidadeRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text19>
+            <Text20 Ref="44" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>14.8,4.8,0.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>UF</Text>
+              <TextBrush>Black</TextBrush>
+            </Text20>
+            <Text21 Ref="45" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>15,5.1,0.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.dsUFRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text21>
+            <Text22 Ref="46" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>12.5,4.8,0.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>CEP</Text>
+              <TextBrush>Black</TextBrush>
+            </Text22>
+            <Text23 Ref="47" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>12.5,5.1,2,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{IIF(Recibos.nuCEPRecibo.Trim() != "",
+Recibos.nuCEPRecibo.Substring(0,2) +
+"." + 
+Recibos.nuCEPRecibo.Substring(2,3)+
+"-" + 
+Recibos.nuCEPRecibo.Substring(5,3),"")}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text23>
+            <Text24 Ref="48" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16.2,4.8,0.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>FONE</Text>
+              <TextBrush>Black</TextBrush>
+            </Text24>
+            <Text25 Ref="49" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>16.3,5.1,2.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <TextBrush>Black</TextBrush>
+            </Text25>
+            <Text3 Ref="50" type="Text" isKey="true">
+              <Brush>LightGray</Brush>
+              <ClientRectangle>15.1,1.4,3.8,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Microsoft Sans Serif,14,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.cdRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Texto45 Ref="51" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,6.7,18.7,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>8ca1af19a29f4152b10dc10511ac4035</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto45</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{"Forma de Pagamento/Documento: "+Recibos.vlPagamento1.ToString()+" em " +Recibos.tpPagamento.Trim() + IIF(Recibos.dsDocumentopagamento != ""," - "+Recibos.dsDocumentopagamento,"")+
+IIF(Recibos.vlPagamento2 &lt;= 0,""," / "+Recibos.vlPagamento2.ToString()+" em " +Recibos.tpPagamento2.Trim() + IIF(Recibos.dsDocumentopagamento2 != ""," - "+Recibos.dsDocumentopagamento2,""))}</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto45>
+            <Texto44 Ref="52" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,6.4,2.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>c1d6b3161d25487991993f5dab8eea3c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto44</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>OBSERVAÇÕES</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto44>
+            <Texto47 Ref="53" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.1,5.9,18.7,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>33c04acea01a405c94aeca0b82c9e6de</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto47</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>RECIBO DE PAGAMENTO DE  ATIVIDADES</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto47>
+            <Texto46 Ref="54" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.1,5.6,1.5,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>1abb8d3185eb4a4e8944b66f809386b8</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto46</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>DESCRIÇÃO</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto46>
+            <Texto42 Ref="55" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>13,7.2,1.6,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>10824bc297d84a54b84a05d057db3be1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto42</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>VL 
+UNITÁRIO</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto42>
+            <Texto41 Ref="56" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>1.5,7.2,11.5,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>a6f9c3d1d1554eb98ce49198494495b9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto41</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>DESCRIÇÃO</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto41>
+            <Texto48 Ref="57" type="Text" isKey="true">
+              <Border>Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>0,7.2,1.5,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>db338c48c36f4dc2b446259ce7381914</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto48</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>CÓDIGO</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto48>
+            <Texto17 Ref="58" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>14.6,7.2,1.4,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>d37badc11d3544349916e770ef1a3b48</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto17</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>VL 
+DESCONTO</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto17>
+            <Texto22 Ref="59" type="Text" isKey="true">
+              <Border>Right, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>17,7.2,2,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>9639891463de4239888a43e24b7e6de9</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto22</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>VALOR</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto22>
+            <Texto51 Ref="60" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>10.3,3.2,2.9,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>5188c6a900b9493d96d16337cc4f9746</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto51</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>INSCRIÇÃO ESTADUAL</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto51>
+            <Texto52 Ref="61" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>10.3,3.5,4.3,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8,Bold| Italic</Font>
+              <Guid>43e77f78b27c42a69e0145b782f07f61</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto52</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>{Recibos.dsInscricaoEstadualRecibo}</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto52>
+            <Text26 Ref="62" type="Text" isKey="true">
+              <Border>Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>Silver</Brush>
+              <ClientRectangle>16,7.2,1,0.7</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold</Font>
+              <Guid>f89aa177b2a74c50bb2674b7f4d0d54d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Text>QTD</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Image2 Ref="63" type="Image" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <ClientRectangle>0.2,0.2,3.9,2.1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn>Evento.imgLogo</DataColumn>
+              <Name>Image2</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <Stretch>True</Stretch>
+            </Image2>
+            <StartPointPrimitive4 Ref="64" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>0,2.4,0,0</ClientRectangle>
+              <Name>StartPointPrimitive4</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>30158b5722024f9a939a2a4e782e52a9</ReferenceToGuid>
+            </StartPointPrimitive4>
+            <EndPointPrimitive4 Ref="65" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>16.3,3.2,0,0</ClientRectangle>
+              <Name>EndPointPrimitive4</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>30158b5722024f9a939a2a4e782e52a9</ReferenceToGuid>
+            </EndPointPrimitive4>
+            <StartPointPrimitive2 Ref="66" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>16.3,2.4,0,0</ClientRectangle>
+              <Name>StartPointPrimitive2</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>8b432e541fab4b0d9585ab5f2d740315</ReferenceToGuid>
+            </StartPointPrimitive2>
+            <EndPointPrimitive2 Ref="67" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>19,3.2,0,0</ClientRectangle>
+              <Name>EndPointPrimitive2</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>8b432e541fab4b0d9585ab5f2d740315</ReferenceToGuid>
+            </EndPointPrimitive2>
+            <StartPointPrimitive9 Ref="68" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>0,3.2,0,0</ClientRectangle>
+              <Name>StartPointPrimitive9</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>b593ec5561bb4d0b8d42fbd19479e4a4</ReferenceToGuid>
+            </StartPointPrimitive9>
+            <EndPointPrimitive9 Ref="69" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>10.2,4,0,0</ClientRectangle>
+              <Name>EndPointPrimitive9</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>b593ec5561bb4d0b8d42fbd19479e4a4</ReferenceToGuid>
+            </EndPointPrimitive9>
+            <StartPointPrimitive3 Ref="70" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>14.7,3.2,0,0</ClientRectangle>
+              <Name>StartPointPrimitive3</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>8b12185fade7495ea2034beb2853c834</ReferenceToGuid>
+            </StartPointPrimitive3>
+            <EndPointPrimitive3 Ref="71" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>19,4,0,0</ClientRectangle>
+              <Name>EndPointPrimitive3</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>8b12185fade7495ea2034beb2853c834</ReferenceToGuid>
+            </EndPointPrimitive3>
+            <EndPointPrimitive10 Ref="72" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>7.1,5.6,0,0</ClientRectangle>
+              <Name>EndPointPrimitive10</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>d944ddd0af304e5a9cafd5f46a80ec2f</ReferenceToGuid>
+            </EndPointPrimitive10>
+            <StartPointPrimitive11 Ref="73" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>7.1,4.8,0,0</ClientRectangle>
+              <Name>StartPointPrimitive11</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>10153ee0ade442f8ba9988ef211af684</ReferenceToGuid>
+            </StartPointPrimitive11>
+            <EndPointPrimitive11 Ref="74" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>12.4,5.6,0,0</ClientRectangle>
+              <Name>EndPointPrimitive11</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>10153ee0ade442f8ba9988ef211af684</ReferenceToGuid>
+            </EndPointPrimitive11>
+            <StartPointPrimitive8 Ref="75" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>12.4,4.8,0,0</ClientRectangle>
+              <Name>StartPointPrimitive8</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>6a784542103e4823b3e705dd344b2dc3</ReferenceToGuid>
+            </StartPointPrimitive8>
+            <EndPointPrimitive8 Ref="76" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>14.7,5.6,0,0</ClientRectangle>
+              <Name>EndPointPrimitive8</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>6a784542103e4823b3e705dd344b2dc3</ReferenceToGuid>
+            </EndPointPrimitive8>
+            <StartPointPrimitive5 Ref="77" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>14.7,4.8,0,0</ClientRectangle>
+              <Name>StartPointPrimitive5</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>cfe86340ae0c487caa49f272f46acb59</ReferenceToGuid>
+            </StartPointPrimitive5>
+            <EndPointPrimitive5 Ref="78" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>16.1,5.6,0,0</ClientRectangle>
+              <Name>EndPointPrimitive5</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>cfe86340ae0c487caa49f272f46acb59</ReferenceToGuid>
+            </EndPointPrimitive5>
+            <StartPointPrimitive7 Ref="79" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>16.1,4.8,0,0</ClientRectangle>
+              <Name>StartPointPrimitive7</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>7858af91910348da80eeb94029a0404f</ReferenceToGuid>
+            </StartPointPrimitive7>
+            <EndPointPrimitive7 Ref="80" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>19,5.6,0,0</ClientRectangle>
+              <Name>EndPointPrimitive7</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>7858af91910348da80eeb94029a0404f</ReferenceToGuid>
+            </EndPointPrimitive7>
+            <StartPointPrimitive10 Ref="81" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>0,4.8,0,0</ClientRectangle>
+              <Name>StartPointPrimitive10</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>d944ddd0af304e5a9cafd5f46a80ec2f</ReferenceToGuid>
+            </StartPointPrimitive10>
+            <StartPointPrimitive6 Ref="82" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>0,5.6,0,0</ClientRectangle>
+              <Name>StartPointPrimitive6</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>2fe56f108dcf4f248815a6eba161b44f</ReferenceToGuid>
+            </StartPointPrimitive6>
+            <EndPointPrimitive12 Ref="83" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>19,6.4,0,0</ClientRectangle>
+              <Name>EndPointPrimitive12</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>2fe56f108dcf4f248815a6eba161b44f</ReferenceToGuid>
+            </EndPointPrimitive12>
+            <StartPointPrimitive13 Ref="84" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>0,6.4,0,0</ClientRectangle>
+              <Name>StartPointPrimitive13</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>de918f7fa1ae43998679a1cc92cbf5a5</ReferenceToGuid>
+            </StartPointPrimitive13>
+            <EndPointPrimitive14 Ref="85" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>19,7.2,0,0</ClientRectangle>
+              <Name>EndPointPrimitive14</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>de918f7fa1ae43998679a1cc92cbf5a5</ReferenceToGuid>
+            </EndPointPrimitive14>
+            <StartPointPrimitive1 Ref="86" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>10.2,3.2,0,0</ClientRectangle>
+              <Name>StartPointPrimitive1</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>74fa40a272d04e6580ba49e27247f2e2</ReferenceToGuid>
+            </StartPointPrimitive1>
+            <EndPointPrimitive1 Ref="87" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>14.7,4,0,0</ClientRectangle>
+              <Name>EndPointPrimitive1</Name>
+              <Page isRef="6" />
+              <Parent isRef="25" />
+              <ReferenceToGuid>74fa40a272d04e6580ba49e27247f2e2</ReferenceToGuid>
+            </EndPointPrimitive1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <PrintIfEmpty>True</PrintIfEmpty>
+        </HeaderBand1>
+        <DataBand1 Ref="88" type="DataBand" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>0,9.1,19,0.5</ClientRectangle>
+          <Components isList="true" count="8">
+            <Text34 Ref="89" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>13,0.1,1.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{Format("{0:N2}",
+  ReciboCursos.vlUnitario)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="90" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Text34>
+            <Text28 Ref="91" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.1,0.1,1.3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{ReciboCursos.cdAtividade.Trim()}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text28>
+            <Text29 Ref="92" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanBreak>True</CanBreak>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>1.55,0.1,11.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{ReciboCursos.noTitulo.Trim()+IIF(ReciboCursos.noProfessor.Trim() != "", " - " + ReciboCursos.noProfessor,"" )}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text29>
+            <Texto49 Ref="93" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>14.6,0.1,1.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <Guid>9daaacf10af546d8ad4f4748eb9938cd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto49</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{Format("{0:N2}",
+  ReciboCursos.vlUnitarioDesconto)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="94" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Texto49>
+            <Texto50 Ref="95" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>17.15,0.1,1.7,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <Guid>6af514048585444e8bc5e45d2dda4eac</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto50</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{Format("{0:N2}",
+  (ReciboCursos.vlUnitario - ReciboCursos.vlUnitarioDesconto) * ReciboCursos.vlQuantidade)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="96" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Texto50>
+            <Text27 Ref="97" type="Text" isKey="true">
+              <Brush>EmptyBrush</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>16,0.1,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7,Bold| Italic</Font>
+              <Guid>8335a82449db481591474808f1709d17</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+              <Text>{Format("{0:N0}",
+  ReciboCursos.vlQuantidade)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="98" type="DateFormat" isKey="true">
+                <StringFormat>F</StringFormat>
+              </TextFormat>
+            </Text27>
+            <StartPointPrimitive24 Ref="99" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>1.3,0,0,0</ClientRectangle>
+              <Name>StartPointPrimitive24</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+            </StartPointPrimitive24>
+            <StartPointPrimitive25 Ref="100" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+              <ClientRectangle>13.9,0,0,0</ClientRectangle>
+              <Name>StartPointPrimitive25</Name>
+              <Page isRef="6" />
+              <Parent isRef="88" />
+            </StartPointPrimitive25>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>ReciboCursos</DataSourceName>
+          <Filters isList="true" count="0" />
+          <KeepChildTogether>True</KeepChildTogether>
+          <KeepDetailsTogether>True</KeepDetailsTogether>
+          <Name>DataBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+        <FaixaVazia1 Ref="101" type="Stimulsoft.Report.Components.StiEmptyBand" isKey="true">
+          <Border>Left, Right;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,10.4,19,0.1</ClientRectangle>
+          <Components isList="true" count="2">
+            <EndPointPrimitive6 Ref="102" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>1.3,0,0,0</ClientRectangle>
+              <Guid>369dfaea27f34a5e90eb9596fcd3ca4f</Guid>
+              <Name>EndPointPrimitive6</Name>
+              <Page isRef="6" />
+              <Parent isRef="101" />
+              <ReferenceToGuid>db13474c002f4f618a22c70e966c68c1</ReferenceToGuid>
+            </EndPointPrimitive6>
+            <EndPointPrimitive13 Ref="103" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+              <ClientRectangle>16.1,0,0,0</ClientRectangle>
+              <Guid>6d7970eb62dc41bd9abc824589bcaa76</Guid>
+              <Name>EndPointPrimitive13</Name>
+              <Page isRef="6" />
+              <Parent isRef="101" />
+              <ReferenceToGuid>db13474c002f4f618a22c70e966c68c1</ReferenceToGuid>
+            </EndPointPrimitive13>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>db13474c002f4f618a22c70e966c68c1</Guid>
+          <Name>FaixaVazia1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </FaixaVazia1>
+        <Retângulo9 Ref="104" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>14.7,5.2,1.4,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>cfe86340ae0c487caa49f272f46acb59</Guid>
+          <Name>Retângulo9</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo9>
+        <Retângulo8 Ref="105" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>12.4,5.2,2.3,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>6a784542103e4823b3e705dd344b2dc3</Guid>
+          <Name>Retângulo8</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo8>
+        <Retângulo7 Ref="106" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>7.1,5.2,5.3,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>10153ee0ade442f8ba9988ef211af684</Guid>
+          <Name>Retângulo7</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo7>
+        <Retângulo4 Ref="107" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,3.6,10.2,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>b593ec5561bb4d0b8d42fbd19479e4a4</Guid>
+          <Name>Retângulo4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo4>
+        <Retângulo1 Ref="108" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,2.8,16.3,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>30158b5722024f9a939a2a4e782e52a9</Guid>
+          <Name>Retângulo1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo1>
+        <Retângulo3 Ref="109" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>16.3,2.8,2.7,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>8b432e541fab4b0d9585ab5f2d740315</Guid>
+          <Name>Retângulo3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo3>
+        <Retângulo5 Ref="110" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>14.7,3.6,4.3,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>8b12185fade7495ea2034beb2853c834</Guid>
+          <Name>Retângulo5</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo5>
+        <Retângulo6 Ref="111" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,5.2,7.1,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>d944ddd0af304e5a9cafd5f46a80ec2f</Guid>
+          <Name>Retângulo6</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo6>
+        <Retângulo10 Ref="112" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>16.1,5.2,2.9,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>7858af91910348da80eeb94029a0404f</Guid>
+          <Name>Retângulo10</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo10>
+        <LinhaVertical4 Ref="113" type="VerticalLinePrimitive" isKey="true">
+          <ClientRectangle>21.1,13.8,0.0254,2.2</ClientRectangle>
+          <Color>Black</Color>
+          <EndCap Ref="114" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </EndCap>
+          <Guid>9a72076e33144049bc831e15fc6332f3</Guid>
+          <Name>LinhaVertical4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <StartCap Ref="115" type="Cap" isKey="true">
+            <Color>Black</Color>
+          </StartCap>
+        </LinhaVertical4>
+        <StartPointPrimitive15 Ref="116" type="Stimulsoft.Report.Components.StiStartPointPrimitive" isKey="true">
+          <ClientRectangle>21.1,13.8,0,0</ClientRectangle>
+          <Name>StartPointPrimitive15</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <ReferenceToGuid>9a72076e33144049bc831e15fc6332f3</ReferenceToGuid>
+        </StartPointPrimitive15>
+        <EndPointPrimitive15 Ref="117" type="Stimulsoft.Report.Components.StiEndPointPrimitive" isKey="true">
+          <ClientRectangle>21.13,16,0,0</ClientRectangle>
+          <Name>EndPointPrimitive15</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <ReferenceToGuid>9a72076e33144049bc831e15fc6332f3</ReferenceToGuid>
+        </EndPointPrimitive15>
+        <Retângulo11 Ref="118" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,6,19,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>2fe56f108dcf4f248815a6eba161b44f</Guid>
+          <Name>Retângulo11</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo11>
+        <Retângulo12 Ref="119" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>0,6.8,19,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>de918f7fa1ae43998679a1cc92cbf5a5</Guid>
+          <Name>Retângulo12</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo12>
+        <Retângulo2 Ref="120" type="RectanglePrimitive" isKey="true">
+          <ClientRectangle>10.2,3.6,4.5,0.8</ClientRectangle>
+          <Color>Black</Color>
+          <Guid>74fa40a272d04e6580ba49e27247f2e2</Guid>
+          <Name>Retângulo2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </Retângulo2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8788cad86f0a4a579a2a4db0d5d010fb</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <PaperSize>A4</PaperSize>
+      <Report isRef="0" />
+      <Watermark Ref="121" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="122" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="10">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+    <value>cllEventos.dll</value>
+    <value>CLLFuncoes.dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportAuthor>Fazendo Mais</ReportAuthor>
+  <ReportChanged>6/26/2014 12:09:16 AM</ReportChanged>
+  <ReportCreated>7/17/2007 9:39:39 AM</ReportCreated>
+  <ReportFile>D:\Desenvolvimento\ConfigCongresso\EventosFM\InscricoesWeb\relatorios\rptRecibo_web.mrt</ReportFile>
+  <ReportGuid>7238b68f43f84e8eb7817ae794114b44</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.ReportControls;
+using Stimulsoft.Report.Components;
+//using cllEventos;
+using CLLFuncoes;
+
+namespace Reports
+{
+    
+    public class Recibo : Stimulsoft.Report.StiReport
+    {
+        CLLFuncoes.ClsFuncoes oclsfuncoes = new ClsFuncoes();
+		
+        public Recibo()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

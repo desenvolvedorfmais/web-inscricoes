@@ -1,0 +1,32 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageboleto.master.cs" Inherits="MasterPageboleto" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>Inscri&ccedil;&otilde;es Web</title>
+    <link href="css/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <%--<script type="text/javascript" src="../scripts/JSCFuncoes.js"></script>--%>
+    <script type="text/javascript" src="scripts/JSCFuncoes.js"></script>
+    <script type="text/javascript" language="JavaScript">
+    <!--
+        javascript: window.history.forward(1);
+    //-->
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div >
+        <div>
+            <div id="topo">
+                &nbsp;</div>
+        </div>
+    </div>
+    <div id="corpo">
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+            
+        </asp:contentplaceholder>
+    </div>
+    </form>
+</body>
+</html>

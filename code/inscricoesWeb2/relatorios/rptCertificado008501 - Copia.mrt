@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.;Integrated Security=False;Initial Catalog=dbEventos_FMLocal;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <participantes Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="4">
+          <value>noParticipante,System.String</value>
+          <value>cdCategoria,System.String</value>
+          <value>trabs,System.Int32</value>
+          <value>palestrantes,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select noParticipante, part.cdCategoria,
+	(select count(*) 
+	    from tbTeses ts
+		where ts.cdEvento = @cdEvento
+        and ts.cdParticipante = @cdParticipante
+		) trabs,
+     (
+SELECT        count(*)
+	FROM            tmpPalestrantesReHuNa
+	WHERE        cdParticipante = @cdParticipante
+     ) palestrantes
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+order by 1</SqlCommand>
+      </participantes>
+      <participantesTrab Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantesTrab</Alias>
+        <Columns isList="true" count="5">
+          <value>ord,System.String</value>
+          <value>noParticipante,System.String</value>
+          <value>TIPO,System.String</value>
+          <value>tpTese,System.String</value>
+          <value>dsAssunto,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantesTrab</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select '000' ord, part.noParticipante, 'RELATOR' TIPO, ts.tpTese,  ts.dsAssunto
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+
+
+join tbTeses ts on part.cdEvento = ts.cdEvento and part.cdParticipante = ts.cdParticipante
+
+left join tbTeseParticipantes tsp on ts.cdTese = tsp.cdTese
+
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+
+and ts.dsSituacao = 'APROVADO'
+
+
+union
+
+select tsp.cdParticipanteTese, tsp.noParticipanteTese, tsp.tpParticipacao1, ts.tpTese,  ts.dsAssunto
+	from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+
+
+join tbTeses ts on part.cdEvento = ts.cdEvento and part.cdParticipante = ts.cdParticipante
+
+join tbTeseParticipantes tsp on ts.cdTese = tsp.cdTese
+
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+
+and ts.dsSituacao = 'APROVADO'
+
+order by 4,1</SqlCommand>
+      </participantesTrab>
+      <participantesPaletra Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantesPaletra</Alias>
+        <Columns isList="true" count="6">
+          <value>cdParticipante,System.String</value>
+          <value>noPalestrante,System.String</value>
+          <value>noPaletraPTBR,System.String</value>
+          <value>noPaletraENUS,System.String</value>
+          <value>noPaletraESP,System.String</value>
+          <value>noCategPalestrante,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantesPaletra</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdParticipante,,22,9</value>
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>SELECT        cdParticipante, noPalestrante, noPaletraPTBR, noPaletraENUS, noPaletraESP, noCategPalestrante
+	FROM            tmpPalestrantesReHuNa
+	WHERE        cdParticipante = @cdParticipante</SqlCommand>
+      </participantesPaletra>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="3">
+    <Página1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="7" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image1 Ref="8" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <File>C:\Eventos\ReHuNa\IV Conferência Internacional sobre Humanização do Parto e Nascimento\Certificado\certif_branco.png</File>
+              <Name>Image1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text1 Ref="9" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.45,7.62,22.2,10</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,20</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>&lt;line-height="1.5"&gt;Certificamos que &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;font-size="23"&gt;&lt;b&gt;{participantes.noParticipante.ToUpper()}&lt;/b&gt;&lt;/font-size&gt;&lt;br&gt;
+participou {IIF(participantes.cdCategoria == "00850119", "&amp;nbsp;como &lt;font-size=\"23\"&gt;&lt;b&gt;MONITOR&lt;/b&gt;&lt;/font-size&gt;","")} da IV Conferência Internacional sobre Humanização do Parto e Nascimento/23º Encontro Nacional de Gestação e Parto Natural Conscientes, de 26 a 30 de novembro de 2016, organizados pela Rede pela Humanização de Parto e Nascimento e Universidade de Brasília, em Brasília, Distrito Federal, Brasil.
+&lt;br&gt;&lt;text-align="right"&gt;&lt;font-size="14"&gt;Carga horária 30 horas.&lt;/font-size&gt;&lt;/text-align&gt;
+&lt;br&gt;&lt;text-align="center"&gt;&lt;font-size="20"&gt;Brasília, 30 novembro de 2016.&lt;/font-size&gt;&lt;/text-align&gt;
+&lt;/line-height&gt;</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text1>
+            <Text2 Ref="10" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.4,5.2,22,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,21,Bold</Font>
+              <Guid>7e5d2f3c28fb44e8a24bbed88ee78f98</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>C E R T I F I C A D O</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>noParticipante</value>
+          </Sort>
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="11" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+    <Page2 Ref="12" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand2 Ref="13" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image3 Ref="14" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <File>C:\Eventos\ReHuNa\IV Conferência Internacional sobre Humanização do Parto e Nascimento\Certificado\certif_branco.png</File>
+              <Name>Image3</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Stretch>True</Stretch>
+            </Image3>
+            <Text4 Ref="15" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.45,7.62,22.2,10</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,20</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>&lt;line-height="1.5"&gt;Certificamos que &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;font-size="23"&gt;&lt;b&gt;{participantesPaletra.noPalestrante.ToUpper()}&lt;/b&gt;&lt;/font-size&gt;&lt;br&gt;
+participou {IIF(participantesPaletra.noCategPalestrante == "mesa", "como &lt;b&gt;palestrante&lt;/b&gt;na Mesa Redonda intitulada", IIF(participantesPaletra.noCategPalestrante == "espaço", "como &lt;b&gt;palestrante&lt;/b&gt; no Espaço Dialogado intitulado","como &lt;b&gt;conferencista&lt;/b&gt; sobre"))} &lt;b&gt;&amp;quot;{participantesPaletra.noPaletraPTBR}&amp;quot;&lt;/b&gt; da IV Conferência Internacional sobre Humanização do Parto e Nascimento/23º Encontro Nacional de Gestação e Parto Natural Conscientes, de 26 a 30 de novembro de 2016, organizados pela Rede pela Humanização de Parto e Nascimento e Universidade de Brasília, em Brasília, Distrito Federal, Brasil.
+&lt;br&gt;&lt;text-align="right"&gt;&lt;font-size="14"&gt;Carga horária 30 horas.&lt;/font-size&gt;&lt;/text-align&gt;
+&lt;br&gt;&lt;text-align="center"&gt;&lt;font-size="20"&gt;Brasília, 30 novembro de 2016.&lt;/font-size&gt;&lt;/text-align&gt;
+&lt;/line-height&gt;</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text4>
+            <Text5 Ref="16" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.4,5.2,22,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,21,Bold</Font>
+              <Guid>7e5d2f3c28fb44e8a24bbed88ee78f98</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>C E R T I F I C A D O</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantesPaletra</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand2</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+          <Sort isList="true" count="0" />
+        </DataBand2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Enabled>False</Enabled>
+      <Guid>2e51786dd5624e8b84c4b4a880c10cbb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page2</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="17" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page2>
+    <Page1 Ref="18" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="19" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image2 Ref="20" type="Image" isKey="true">
+              <BeforePrintEvent>
+</BeforePrintEvent>
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Enabled>False</Enabled>
+              <File>C:\Eventos\ReHuNa\IV Conferência Internacional sobre Humanização do Parto e Nascimento\Certificado\certif_branco.png</File>
+              <Name>Image2</Name>
+              <Page isRef="18" />
+              <Parent isRef="19" />
+              <Stretch>True</Stretch>
+            </Image2>
+            <Text3 Ref="21" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.45,7.02,22.2,10.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,18</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="18" />
+              <Parent isRef="19" />
+              <Text>&lt;line-height="1.4"&gt;Certificamos que &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;font-size="23"&gt;&lt;b&gt;{participantesTrab.noParticipante.ToUpper()}&lt;/b&gt;&lt;/font-size&gt;&lt;br&gt;
+{IIF(participantesTrab.TIPO == "RELATOR", 
+    IIF(participantesTrab.tpTese == "Pôster", "apresentou o &lt;b&gt;pôster&amp;nbsp;&amp;quot;" ,
+    IIF(participantesTrab.tpTese == "Mostra Internacional", "apresentou o trabalho&amp;nbsp;&lt;b&gt;&amp;quot;" , 
+     "fez a &lt;b&gt;apresentação oral&amp;nbsp;&amp;quot;"
+    )),
+  "foi &lt;b&gt;coautor&lt;/b&gt; " + IIF(participantesTrab.tpTese == "Pôster", "no &lt;b&gt;pôster&amp;nbsp;&amp;quot;" ,
+    IIF(participantesTrab.tpTese == "Mostra Internacional", "no trabalho&amp;nbsp;&lt;b&gt;&amp;quot;" , 
+     "na &lt;b&gt;apresentação oral&amp;nbsp;&amp;quot;"
+    ))
+)+ participantesTrab.dsAssunto + "&amp;quot;&lt;/b&gt;" + 
+
+	IIF(participantesTrab.tpTese == "Pôster", "&amp;nbsp;na " ,
+    IIF(participantesTrab.tpTese == "Mostra Internacional", "&amp;nbsp;na &lt;b&gt;Mostra Internacional de Boas Práticas de Gestão e de Cuidado na Atenção Perinatal&lt;/b&gt;,&amp;nbsp;como parte da&amp;nbsp;" , 
+     "&amp;nbsp;na "
+    ))
+
+} IV Conferência Internacional sobre Humanização do Parto e Nascimento/23º Encontro Nacional de Gestação e Parto Natural Conscientes, de 26 a 30 de novembro de 2016, organizados pela Rede pela Humanização de Parto e Nascimento e Universidade de Brasília, em Brasília, Distrito Federal, Brasil.
+&lt;br&gt;&lt;br&gt;&lt;text-align="center"&gt;&lt;font-size="20"&gt;Brasília, 30 novembro de 2016.&lt;/font-size&gt;&lt;/text-align&gt;
+&lt;/line-height&gt;</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text3>
+            <Text333 Ref="22" type="Text" isKey="true">
+              <AllowHtmlTags>True</AllowHtmlTags>
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <ClientRectangle>6.4,5.2,22,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Editable>True</Editable>
+              <Font>Calibri,21,Bold</Font>
+              <Guid>7e5d2f3c28fb44e8a24bbed88ee78f98</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text333</Name>
+              <Page isRef="18" />
+              <Parent isRef="19" />
+              <Text>C E R T I F I C A D O</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <TextQuality>Wysiwyg</TextQuality>
+            </Text333>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantesTrab</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="18" />
+          <Parent isRef="18" />
+          <Sort isList="true" count="4">
+            <value>ASC</value>
+            <value>tpTese</value>
+            <value>ASC</value>
+            <value>ord</value>
+          </Sort>
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Enabled>False</Enabled>
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="23" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="24" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>12/14/2016 12:33:20 PM</ReportChanged>
+  <ReportCreated>6/26/2009 3:37:01 PM</ReportCreated>
+  <ReportFile>C:\Users\Hermevaldo\Source\Workspaces\FM_EventosProjetos\FM_Eventos_Projetos\inscricoesWeb2\relatorios\rptCertificado008501.mrt</ReportFile>
+  <ReportGuid>7aa5ad29e7c74d9cbdfa45e63a22a5dc</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventos_FM;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <participantes Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="2">
+          <value>noParticipante,System.String</value>
+          <value>noCategoria,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select noParticipante, noCategoria
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+order by 1</SqlCommand>
+      </participantes>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Página1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="5" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image1 Ref="6" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://inscricoesweb.fazendomais.com/imagensgeral/006103/certificados_A4-3.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text1 Ref="7" type="Text" isKey="true">
+              <Border>None;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.65,8.6,25,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,18,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{participantes.noParticipante.ToUpper()}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text1>
+            <Text2 Ref="8" type="Text" isKey="true">
+              <Border>None;Black;1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,9.5,20,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,18,Bold</Font>
+              <Guid>a99b41a2a40840e4ae4ea040453defde</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{participantes.noCategoria.ToUpper()}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Bottom</VertAlignment>
+            </Text2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>noParticipante</value>
+          </Sort>
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="9" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+  </Pages>
+  <PrinterSettings Ref="10" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>11/20/2015 4:17:58 PM</ReportChanged>
+  <ReportCreated>6/26/2009 3:37:01 PM</ReportCreated>
+  <ReportFile>C:\Eventos\UNA Eventos\Conferencia de Segurança Alimentar\Certificados\rptCertificado006103.mrt</ReportFile>
+  <ReportGuid>212e95f2a4964725bf9ca94ae49b1144</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.;Integrated Security=False;Initial Catalog=dbEventos_FMLocal;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <participantes Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="4">
+          <value>noParticipante,System.String</value>
+          <value>cdCategoria,System.String</value>
+          <value>trabs,System.Int32</value>
+          <value>palestrantes,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select noParticipante, part.cdCategoria,
+	(select count(*) 
+	    from tbTeses ts
+		where ts.cdEvento = @cdEvento
+        and ts.cdParticipante = @cdParticipante
+		) trabs,
+     (
+SELECT        count(*)
+	FROM            tmpPalestrantesReHuNa
+	WHERE        cdParticipante = @cdParticipante
+     ) palestrantes
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+order by 1</SqlCommand>
+      </participantes>
+      <participantesPaletra Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantesPaletra</Alias>
+        <Columns isList="true" count="6">
+          <value>cdParticipante,System.String</value>
+          <value>noPalestrante,System.String</value>
+          <value>noPaletraPTBR,System.String</value>
+          <value>noPaletraENUS,System.String</value>
+          <value>noPaletraESP,System.String</value>
+          <value>noCategPalestrante,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantesPaletra</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>SELECT        cdParticipante, noPalestrante, noPaletraPTBR, noPaletraENUS, noPaletraESP, noCategPalestrante
+	FROM            tmpPalestrantesReHuNa
+	WHERE        cdParticipante = @cdParticipante</SqlCommand>
+      </participantesPaletra>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Página1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="6" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image1 Ref="7" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/008501/certif_branco.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text1 Ref="8" type="Text" isKey="true">
+              <Border>None;[69:98:135];1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,5.2,22,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,21,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>C E R T I F I C A D O</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+            </Text1>
+            <RichText1 Ref="9" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+              <BackColor>Transparent</BackColor>
+              <Border>None;Black;1;Solid;False;4;Black</Border>
+              <ClientRectangle>6.4,7.6,22,10</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn />
+              <Margins>0,0,0,0</Margins>
+              <Name>RichText1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Text>__LP___x005C_rtf1_x005C_fbidis_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fnil_x005C_fcharset0_x0020_Calibri_x003B___RP____LP___x005C_f1_x005C_fnil_x005C_fcharset178_x0020_Calibri_x003B___RP____LP___x005C_f2_x005C_fnil_x005C_fcharset0_x0020_Microsoft_x0020_Sans_x0020_Serif_x003B___RP____RP___x000D__x000A___LP___x005C_colortbl_x0020__x003B__x005C_red87_x005C_green118_x005C_blue157_x003B___RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_ltrpar_x005C_cf1_x005C_f0_x005C_fs37_x0020_Certificamos_x0020_que_x0020__x0020__x005C_b_x005C_fs44_x007B_participantes.noParticipante_x007D__x005C_b0_x005C_f1_x005C_rtlch_x005C_fs37_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qj_x005C_f0_x005C_ltrch_x0020_participou_x0020__x007B_IIF_x0028_participantes.cdCategoria_x0020__x003D__x003D__x0020__x0022_00850119_x0022__x002C__x0020__x0022_como_x0020__x005C_b_x0020_MONITOR_x005C_b0_x0020__x0022__x002C__x0022__x0022__x0029__x007D__x005C_b_x005C_fs43_x0020__x0020__x005C_b0_x005C_fs37_x0020_da_x0020_IV_x0020_Confer_x005C__x0027_eancia_x0020_Internacional_x0020_sobre_x0020_Humaniza_x005C__x0027_e7_x005C__x0027_e3o_x0020_do_x0020_Parto_x0020_e_x0020_Nascimento_x002F_23_x005C__x0027_ba_x0020_Encontro_x0020_Nacional_x0020_de_x0020_Gesta_x005C__x0027_e7_x005C__x0027_e3o_x0020_e_x0020_Parto_x0020_Natural_x0020_Conscientes_x002C__x0020_de_x0020_26_x0020_a_x0020_30_x0020_de_x0020_novembro_x0020_de_x0020_2016_x002C__x0020_organizados_x0020_pela_x0020_Rede_x0020_pela_x0020_Humaniza_x005C__x0027_e7_x005C__x0027_e3o_x0020_de_x0020_Parto_x0020_e_x0020_Nascimento_x0020_e_x0020_Universidade_x0020_de_x0020_Bras_x005C__x0027_edlia_x002C__x0020_em_x0020_Bras_x005C__x0027_edlia_x002C__x0020_Distrito_x0020_Federal_x002C__x0020_Brasil._x005C_f1_x005C_rtlch_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qr_x005C_f0_x005C_ltrch_x005C_fs28_x0020_Carga_x0020_hor_x005C__x0027_e1ria_x0020_30_x0020_horas._x005C_f1_x005C_rtlch_x005C_fs26_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qc_x005C_f0_x005C_ltrch_x005C_fs37_x005C_par_x000D__x000A_Bras_x005C__x0027_edlia_x002C__x0020_30_x0020_novembro_x0020_de_x0020_2016._x005C_cf0_x005C_f2_x005C_fs17_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+            </RichText1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>noParticipante</value>
+          </Sort>
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="10" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+    <Page1 Ref="11" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="12" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image2 Ref="13" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/008501/certif_branco.png</ImageURL>
+              <Name>Image2</Name>
+              <Page isRef="11" />
+              <Parent isRef="12" />
+              <Stretch>True</Stretch>
+            </Image2>
+            <Text2 Ref="14" type="Text" isKey="true">
+              <Border>None;[69:98:135];1;Solid;False;4;Black</Border>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,5.2,22,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,21,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="11" />
+              <Parent isRef="12" />
+              <Text>C E R T I F I C A D O</Text>
+              <TextBrush>[87:118:157]</TextBrush>
+            </Text2>
+            <RichText2 Ref="15" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>6.4,7.6,22,10</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn />
+              <Margins>0,0,0,0</Margins>
+              <Name>RichText2</Name>
+              <Page isRef="11" />
+              <Parent isRef="12" />
+              <Text>__LP___x005C_rtf1_x005C_fbidis_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fnil_x005C_fcharset0_x0020_Calibri_x003B___RP____LP___x005C_f1_x005C_fnil_x005C_fcharset178_x0020_Calibri_x003B___RP____LP___x005C_f2_x005C_fnil_x005C_fcharset0_x0020_Microsoft_x0020_Sans_x0020_Serif_x003B___RP____RP___x000D__x000A___LP___x005C_colortbl_x0020__x003B__x005C_red87_x005C_green118_x005C_blue157_x003B___RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_ltrpar_x005C_cf1_x005C_f0_x005C_fs37_x0020_Certificamos_x0020_que_x0020__x0020__x005C_b_x005C_fs44_x007B_participantes.noParticipante_x007D__x005C_b0_x005C_f1_x005C_rtlch_x005C_fs37_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qj_x005C_f0_x005C_ltrch_x0020_participou_x0020__x007B_IIF_x0028_participantesPaletra.noCategPalestrante_x0020__x003D__x003D__x0020__x0022_mesa_x0022__x002C__x0020__x0022_como_x0020__x005C_b_x0020_palestrante_x005C_b0_x0020__x0020_na_x0020_Mesa_x0020_Redonda_x0020_intitulada_x0022__x002C__x0020_IIF_x0028_participantesPaletra.noCategPalestrante_x0020__x003D__x003D__x0020__x0022_espa_x005C__x0027_e7o_x0022__x002C__x0020__x0022_como_x0020__x005C_b_x0020_palestrante_x005C_b0_x0020__x0020_no_x0020_Espa_x005C__x0027_e7o_x0020_Dialogado_x0020_intitulado_x0022__x002C__x0022_como_x0020__x005C_b_x0020_conferencista_x005C_b0_x0020__x0020_sobre_x0022__x0029__x0029__x007D__x0020__x005C_b_x0020__x0022__x007B_participantesPaletra.noPaletraPTBR_x007D__x0022__x005C_b0_x0020__x0020__x007B_IIF_x0028_participantesPaletra.noCategPalestrante_x0020__x003D__x003D__x0020__x0022_mesa_x0022__x002C__x0020__x0022__x0020_realizada_x0020_na_x0022__x002C__x0020_IIF_x0028_participantesPaletra.noCategPalestrante_x0020__x003D__x003D__x0020__x0022_espa_x005C__x0027_e7o_x0022__x002C__x0020__x0022__x0020_realizado_x0020_no_x0022__x002C__x0022__x0020_na_x0022__x0029__x0029__x007D__x0020_IV_x0020_Confer_x005C__x0027_eancia_x0020_Internacional_x0020_sobre_x0020_Humaniza_x005C__x0027_e7_x005C__x0027_e3o_x0020_do_x0020_Parto_x0020_e_x0020_Nascimento_x002F_23_x005C__x0027_ba_x0020_Encontro_x0020_Nacional_x0020_de_x0020_Gesta_x005C__x0027_e7_x005C__x0027_e3o_x0020_e_x0020_Parto_x0020_Natural_x0020_Conscientes_x002C__x0020_de_x0020_26_x0020_a_x0020_30_x0020_de_x0020_novembro_x0020_de_x0020_2016_x002C__x0020_organizados_x0020_pela_x0020_Rede_x0020_pela_x0020_Humaniza_x005C__x0027_e7_x005C__x0027_e3o_x0020_de_x0020_Parto_x0020_e_x0020_Nascimento_x0020_e_x0020_Universidade_x0020_de_x0020_Bras_x005C__x0027_edlia_x002C__x0020_em_x0020_Bras_x005C__x0027_edlia_x002C__x0020_Distrito_x0020_Federal_x002C__x0020_Brasil._x005C_f1_x005C_rtlch_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qr_x005C_fs26_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_qc_x005C_f0_x005C_ltrch_x005C_fs37_x005C_par_x000D__x000A_Bras_x005C__x0027_edlia_x002C__x0020_30_x0020_novembro_x0020_de_x0020_2016._x005C_cf0_x005C_f2_x005C_fs17_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+            </RichText2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantesPaletra</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="11" />
+          <Parent isRef="11" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>4c9304be77b545d8a37d17a8714fd1f6</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="16" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="17" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>12/14/2016 3:32:30 PM</ReportChanged>
+  <ReportCreated>6/26/2009 3:37:01 PM</ReportCreated>
+  <ReportFile>C:\Users\Hermevaldo\Source\Workspaces\FM_EventosProjetos\FM_Eventos_Projetos\inscricoesWeb2\relatorios\rptCertificado008501.mrt</ReportFile>
+  <ReportGuid>54c0c122d8a44d9f8ee8ee3a86b891ce</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnn Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnn</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=False;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventos_FM;User ID=sa</ConnectionString>
+        <Name>cnn</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnn>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <ReciboCursos Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>ReciboCursos</Alias>
+        <Columns isList="true" count="6">
+          <value>cdRecibo,System.String</value>
+          <value>cdPedido,System.String</value>
+          <value>cdAtividade,System.String</value>
+          <value>vlUnitario,System.Decimal</value>
+          <value>vlUnitarioDesconto,System.Decimal</value>
+          <value>noTitulo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>ReciboCursos</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdRecibo,,22,12</value>
+        </Parameters>
+        <SqlCommand>SELECT r.cdRecibo,
+       pa.*,
+       atv.noTitulo      
+FROM  tbRecibos r
+join  tbPedidos ped
+  on  r.cdEvento = ped.cdEvento
+ and  r.cdPedido = ped.cdPedido
+join  tbPedidosAtividades pa
+  on  ped.cdPedido = pa.cdPedido
+join  tbAtividades atv
+  on  r.cdEvento = atv.cdEvento
+ and  pa.cdAtividade = atv.cdAtividade    
+where r.cdRecibo = @cdRecibo</SqlCommand>
+      </ReciboCursos>
+      <Recibos Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Recibos</Alias>
+        <Columns isList="true" count="109">
+          <value>cdEvento,System.String</value>
+          <value>cdRecibo,System.String</value>
+          <value>vlRecibo,System.Decimal</value>
+          <value>dtRecibo,System.DateTime</value>
+          <value>vlDesconto,System.Decimal</value>
+          <value>vlAproveitamentoCredito,System.Decimal</value>
+          <value>tpPagamento,System.String</value>
+          <value>dsDocumentopagamento,System.String</value>
+          <value>dsObservacaopagamento,System.String</value>
+          <value>cdOperador,System.String</value>
+          <value>cdOperadordesconto,System.String</value>
+          <value>flEstorno,System.Boolean</value>
+          <value>dtEstorno,System.DateTime</value>
+          <value>cdOperadorEstorno,System.String</value>
+          <value>cdPedido,System.String</value>
+          <value>cdPedido1,System.String</value>
+          <value>cdEvento1,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>tpPedido,System.String</value>
+          <value>dtPedido,System.DateTime</value>
+          <value>vlTotalPedido,System.Decimal</value>
+          <value>flPago,System.Boolean</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>cdEvento2,System.String</value>
+          <value>cdParticipante1,System.String</value>
+          <value>cdCredencial,System.String</value>
+          <value>dtCredencial,System.DateTime</value>
+          <value>cdCategoria,System.String</value>
+          <value>noParticipante,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsDocIdentificador,System.String</value>
+          <value>dsEmail,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>noBairro,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noPais,System.String</value>
+          <value>dsFone1,System.String</value>
+          <value>dsFone2,System.String</value>
+          <value>dsFone3,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>noCargo,System.String</value>
+          <value>noAreaAtuacao,System.String</value>
+          <value>dsSexo,System.String</value>
+          <value>dsNascimento,System.String</value>
+          <value>dsObservacoes,System.String</value>
+          <value>dsAuxiliar1,System.String</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>dsAuxiliar3,System.String</value>
+          <value>dsAuxiliar4,System.String</value>
+          <value>dsAuxiliar5,System.String</value>
+          <value>dsAuxiliar6,System.String</value>
+          <value>dsAuxiliar7,System.String</value>
+          <value>dsAuxiliar8,System.String</value>
+          <value>dsAuxiliar9,System.String</value>
+          <value>dsAuxiliar10,System.String</value>
+          <value>dsAuxiliar11,System.String</value>
+          <value>dsAuxiliar12,System.String</value>
+          <value>dsAuxiliar13,System.String</value>
+          <value>dsAuxiliar14,System.String</value>
+          <value>dsAuxiliar15,System.String</value>
+          <value>dsAuxiliar16,System.String</value>
+          <value>dsAuxiliar17,System.String</value>
+          <value>dsAuxiliar18,System.String</value>
+          <value>dsAuxiliar19,System.String</value>
+          <value>flAtivo1,System.Boolean</value>
+          <value>dtCadastro,System.DateTime</value>
+          <value>cdEvento3,System.String</value>
+          <value>cdCategoria1,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>flPagamento,System.Boolean</value>
+          <value>vlPagamento,System.Decimal</value>
+          <value>flCertificado,System.Boolean</value>
+          <value>flAtividades,System.Boolean</value>
+          <value>flMaterial,System.Boolean</value>
+          <value>flRefeicao,System.Boolean</value>
+          <value>flCortesias,System.Boolean</value>
+          <value>flDescontos,System.Boolean</value>
+          <value>flSorteio,System.Boolean</value>
+          <value>flQuestionario,System.Boolean</value>
+          <value>flAtivo2,System.Boolean</value>
+          <value>noOperador,System.String</value>
+          <value>tpPagamento1,System.String</value>
+          <value>dsNomeRecibo,System.String</value>
+          <value>nuCEPRecibo,System.String</value>
+          <value>dsEnderecoRecibo,System.String</value>
+          <value>noBairroRecibo,System.String</value>
+          <value>noCidadeRecibo,System.String</value>
+          <value>dsUFRecibo,System.String</value>
+          <value>nuCPFCNPJRecibo,System.String</value>
+          <value>dsInscricaoEstadualRecibo,System.String</value>
+          <value>dsSenhaWeb,System.String</value>
+          <value>flEmailValidado,System.Boolean</value>
+          <value>flSMS_BV_Enviado,System.Boolean</value>
+          <value>flVisivelWeb,System.Boolean</value>
+          <value>flEnviarSMS,System.Boolean</value>
+          <value>dtVencimentoPedido,System.DateTime</value>
+          <value>qtdParcelas,System.Int32</value>
+          <value>flSMS_FoneValido,System.Boolean</value>
+          <value>cdPatrocinador,System.String</value>
+          <value>flCriticar,System.Boolean</value>
+          <value>flControlado,System.Boolean</value>
+          <value>flConfirmacaoCadWeb,System.Boolean</value>
+          <value>flVerificarPreCadastro,System.Boolean</value>
+          <value>tpVerificacaoPreCadastro,System.String</value>
+          <value>dsMensagemPreCadastro,System.String</value>
+          <value>vlTotalRecibo,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Recibos</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdRecibo,,22,12</value>
+        </Parameters>
+        <SqlCommand>SELECT r.*, ped.*, p.*, cat.*, op.noOperador,
+       (r.vlRecibo - vlDesconto) vlTotalRecibo
+  FROM tbRecibos r 
+  JOIN tbPedidos ped
+    on r.cdEvento = ped.cdEvento
+   and r.cdPedido = ped.cdPedido
+  join tbParticipantes p
+    on r.cdEvento = p.cdEvento
+   and ped.cdParticipante = p.cdParticipante
+  join tbCategorias cat
+    on r.cdEvento = cat.cdEvento
+   and p.cdCategoria = cat.cdCategoria  
+  join tbOperadores op
+    on r.cdEvento = op.cdEvento
+   and r.cdOperador = op.cdOperador  
+ where r.cdRecibo = @cdRecibo</SqlCommand>
+      </Recibos>
+      <Evento Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Evento</Alias>
+        <Columns isList="true" count="29">
+          <value>cdEvento,System.String</value>
+          <value>cdCliente,System.String</value>
+          <value>noEvento,System.String</value>
+          <value>dsEvento,System.String</value>
+          <value>dtInicioEvento,System.DateTime</value>
+          <value>dtFinalEvento,System.DateTime</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>flEventoComRecebimentos,System.Boolean</value>
+          <value>dsSenha,System.String</value>
+          <value>dsEmailEvento,System.String</value>
+          <value>flSMS_BV,System.Boolean</value>
+          <value>dsSMS_Remetente,System.String</value>
+          <value>dsSMS_Mensagem_BV,System.String</value>
+          <value>cdEvento1,System.String</value>
+          <value>imgBanner,System.Byte[]</value>
+          <value>imgLogo,System.Byte[]</value>
+          <value>cdEvento2,System.String</value>
+          <value>nomRealizador,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsInscricaoEstadual,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>nomBairro,System.String</value>
+          <value>nomCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>nuFone,System.String</value>
+          <value>nuFax,System.String</value>
+          <value>dsSite,System.String</value>
+          <value>dsEmail,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Evento</Name>
+        <NameInSource>cnn</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select *
+from dbo.tbClientesEventos evto
+left join dbo.tbEventosImagens img
+  on evto.cdEvento = img.cdEvento
+left join dbo.tbDadosEvento dad
+  on evto.cdEvento = dad.cdEvento
+where evto.cdEvento = @cdEvento  </SqlCommand>
+      </Evento>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Página1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <CabeçalhoPágina1 Ref="7" type="PageHeaderBand" isKey="true">
+          <Border>None;Black;3;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,21,29.7</ClientRectangle>
+          <Components isList="true" count="8">
+            <Imagem2 Ref="8" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7,19,7.2,5.02</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/005503/AssinaturaRecibo.png</ImageURL>
+              <Name>Imagem2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Stretch>True</Stretch>
+            </Imagem2>
+            <Image1 Ref="9" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.4,1,18.4,6.44</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/005503/Topo2016_recibo.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Texto1 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4.2,8,12.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Microsoft Sans Serif,16,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>RECIBO Nº {Recibos.cdRecibo} / {Format("{0:yyyy}", Recibos.dtRecibo)}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Texto1>
+            <TextoRico1 Ref="11" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>2,10.8,17,5.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn />
+              <Enabled>False</Enabled>
+              <Margins>0,0,0,0</Margins>
+              <Name>TextoRico1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>__LP___x005C_rtf1_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fswiss_x005C_fprq2_x005C_fcharset0_x0020_Arial_x003B___RP____LP___x005C_f1_x005C_fnil_x005C_fcharset0_x0020_Microsoft_x0020_Sans_x0020_Serif_x003B___RP____RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_qj_x005C_f0_x005C_fs24_x0020_Recebemos_x0020_do_x0028_a_x0029__x0020__x007B_Recibos.dsNomeRecibo_x007D__x005C_b_x0020__x002C__x0020__x005C_b0_x0020_inscrito_x0028_a_x0029__x0020_no_x0020_CPF_x0020_sob_x0020_o_x0020_n_x005C__x0027_famero_x0020__x005C_b_x007B_oclsfuncoes.CPFCNPJMascarar_x0028_Recibos.nuCPFCNPJRecibo.Trim_x0028__x0029__x0029__x007D__x002C__x005C_b0_x0020__x0020_a_x0020_quantia_x0020_de_x0020__x005C_b_x0020_R_x0024__x0020__x007B_Recibos.vlTotalRecibo_x007D__x0020__x0028__x0020__x007B_oclsfuncoes.MoedaPorExtenso_x0028_Recibos.vlTotalRecibo_x0029__x007D__x0020__x0029__x0020__x005C_b0_x0020_referente_x0020__x005C__x0027_e0_x0020_inscri_x005C__x0027_e7_x005C__x0027_e3o_x0020_para_x0020_o_x0020__x005C_b_x007B_Evento.noEvento_x007D__x002C__x0020_que_x0020_ser_x005C__x0027_e1_x0020_realizado_x0020_no_x0020_per_x005C__x0027_edodo_x0020_de_x0020__x007B_Format_x0028__x0022__x007B_0:dd_x007D__x0022__x002C_Evento.dtInicioEvento_x0029__x007D__x0020_a_x0020__x007B_Format_x0028__x0022__x007B_0:dd_x007D__x0022__x002C_Evento.dtFinalEvento_x0029__x007D__x0020_de_x0020__x007B_Format_x0028__x0022__x007B_0:MMMM_x007D__x0022__x002C_Evento.dtFinalEvento_x0029__x007D__x0020_de_x0020__x007B_Format_x0028__x0022__x007B_0:yyyy_x007D__x0022__x002C_Evento.dtFinalEvento_x0029__x007D__x002C__x0020_em_x0020__x007B_Evento.dsEvento_x007D_._x005C_b0_x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_pard_x005C_qr_x0020_Bras_x005C__x0027_edlia_x002C__x0020__x007B_Format_x0028__x0022__x007B_0:dd_x007D__x0022__x002C__x0020_Today_x0029__x007D__x0020_de_x0020__x007B_Format_x0028__x0022__x007B_0:MMMM_x007D__x0022__x002C__x0020_Today_x0029__x007D__x0020_de_x0020__x007B_Format_x0028__x0022__x007B_0:yyyy_x007D__x0022__x002C__x0020_Today_x0029__x007D_._x005C_f1_x005C_fs17_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+            </TextoRico1>
+            <Text1 Ref="12" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,21.8,17,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12,Bold</Font>
+              <Guid>29f2575a667c4e618d5f05d3188e8423</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Otávio Vieira da Cunha Filho</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+            <Text2 Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2,22.42,17,3.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Guid>196ab7b49947452a9c99957503ce73b4</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Associação Nacional das Empresas de Transportes Urbanos 
+CNPJ: 03.604.923/0001-40
+Endereço: SAUS Q. 1, Bl. J, Ed. CNT, 9º Andar - CEP: 70070-944  
+Brasília/DF 
+Fone: +55 61 2103-9293
+E-mail: seminario@ntu.org.br
+</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <Text4 Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanBreak>True</CanBreak>
+              <CanGrow>True</CanGrow>
+              <CanShrink>True</CanShrink>
+              <ClientRectangle>2,11.4,17,4.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <HorAlignment>Width</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Recebemos de {Recibos.dsNomeRecibo}, inscrito(a) no CPF sob o número {oclsfuncoes.CPFCNPJMascarar(Recibos.nuCPFCNPJRecibo.Trim())}, a quantia de R$ {Recibos.vlTotalRecibo} ( {oclsfuncoes.MoedaPorExtenso(Recibos.vlTotalRecibo)} ) referente à inscrição para o {Evento.noEvento}, que acontecerá nos dias 23 e 24 de agosto de 2016, no Royal Tulip Brasília Alvorada, em Brasília - DF.
+
+
+Forma de pagamento: {Recibos.tpPagamento}.</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Text4>
+            <Text5 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,16.4,12.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,12</Font>
+              <Guid>81c818e8e6934364a32771698358e135</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <Text>Brasília, {Format("{0:dd}", Recibos.dtRecibo)} de {Format("{0:MMMM}", Recibos.dtRecibo)} de {Format("{0:yyyy}", Recibos.dtRecibo)}.</Text>
+              <TextBrush>Black</TextBrush>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>CabeçalhoPágina1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </CabeçalhoPágina1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>8b19feded9804545a09aff9f371e339f</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="16" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <ImageStretch>True</ImageStretch>
+        <ShowBehind>True</ShowBehind>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+  </Pages>
+  <PrinterSettings Ref="17" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="10">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+    <value>cllEventos.dll</value>
+    <value>CLLFuncoes.dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>6/21/2016 2:01:02 PM</ReportChanged>
+  <ReportCreated>7/6/2011 11:26:48 PM</ReportCreated>
+  <ReportFile>C:\Users\Hermevaldo\Source\Workspaces\FM_EventosProjetos\FM_Eventos_Projetos\inscricoesWeb2\relatorios\rptReciboNTUPF.mrt</ReportFile>
+  <ReportGuid>563360cba37a4b4599e68bd34ae7d2f8</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+//using cllEventos;
+using CLLFuncoes;
+
+namespace Reports
+{
+    
+    public class rptReciboPF : Stimulsoft.Report.StiReport
+    {
+         CLLFuncoes.ClsFuncoes oclsfuncoes = new ClsFuncoes();
+        public rptReciboPF()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.;Integrated Security=False;Initial Catalog=dbEventos_FM;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <participantes Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="3">
+          <value>noParticipante,System.String</value>
+          <value>dsAuxiliar8,System.String</value>
+          <value>noInstituicao,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select noParticipante, dsAuxiliar8, noInstituicao
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante
+and part.cdCredencial &lt;&gt; '0'
+order by 1</SqlCommand>
+      </participantes>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Página1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="5" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="4">
+            <Image1 Ref="6" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <File>D:\Eventos\COMUNICATO\2017\33º Congresso Nacional CNTE\Certificados\33_congresso_da_cnte_certificado_suplente_final2.jpg</File>
+              <Name>Image1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text1 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.25,11,27,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,30,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{participantes.noParticipante.ToUpper()}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <Text2 Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,18.1,2.6,0.5</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{participantes.dsAuxiliar8}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text3 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,12.6,27,1</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,18,Bold</Font>
+              <Guid>88e97f0a657e456aacb8d9279551185a</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{participantes.noInstituicao.ToUpper()}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>noParticipante</value>
+          </Sort>
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="10" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+    <Page1 Ref="11" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <DataBand1 Ref="12" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="1">
+            <Image2 Ref="13" type="Image" isKey="true">
+              <Brush>[239:211:210]</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <File>D:\Eventos\COMUNICATO\2017\33º Congresso Nacional CNTE\Certificados\33_congresso_da_cnte_certificado_verso_final2.jpg</File>
+              <Name>Image2</Name>
+              <Page isRef="11" />
+              <Parent isRef="12" />
+              <Stretch>True</Stretch>
+            </Image2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="11" />
+          <Parent isRef="11" />
+          <Sort isList="true" count="2">
+            <value>ASC</value>
+            <value>noParticipante</value>
+          </Sort>
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>6d648b2e6011428392257d8bc3e7c7ba</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="14" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="15" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>1/16/2017 1:56:51 PM</ReportChanged>
+  <ReportCreated>6/26/2009 3:37:01 PM</ReportCreated>
+  <ReportFile>D:\Eventos\COMUNICATO\2017\33º Congresso Nacional CNTE\Certificados\Local\rptCertificado000565Suplente.mrt</ReportFile>
+  <ReportGuid>cf335d4c498b451c87a9718c5653be6a</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

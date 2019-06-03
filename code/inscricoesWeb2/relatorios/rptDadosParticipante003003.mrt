@@ -1,0 +1,1089 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Qu454rFm;Persist Security Info=True;Data Source=mssql.fazendomais.com;Integrated Security=False;Initial Catalog=fazendomais1;User ID=fazendomais1</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="2">
+      <Evento Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>Evento</Alias>
+        <Columns isList="true" count="47">
+          <value>cdEvento,System.String</value>
+          <value>cdCliente,System.String</value>
+          <value>noEvento,System.String</value>
+          <value>dsEvento,System.String</value>
+          <value>dtInicioEvento,System.DateTime</value>
+          <value>dtFinalEvento,System.DateTime</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>flEventoComRecebimentos,System.Boolean</value>
+          <value>dsSenha,System.String</value>
+          <value>dsEmailEvento,System.String</value>
+          <value>flSMS_BV,System.Boolean</value>
+          <value>dsSMS_Remetente,System.String</value>
+          <value>dsSMS_Mensagem_BV,System.String</value>
+          <value>flEmiteRecibo,System.Boolean</value>
+          <value>dtAberturaInscrWeb,System.DateTime</value>
+          <value>dtFechamentoInscrWeb,System.DateTime</value>
+          <value>flSuspenderInscricaoWeb,System.Boolean</value>
+          <value>flSuspenderInscricaoLocal,System.Boolean</value>
+          <value>flEnviarMensagensEmail,System.Boolean</value>
+          <value>dsCorpoMensagensEmail,System.String</value>
+          <value>flAutenticacaoWeb,System.Boolean</value>
+          <value>dsCampoAutenticacao,System.String</value>
+          <value>dsLinkRedirecionamento,System.String</value>
+          <value>dsInformacoesPreviasWeb,System.String</value>
+          <value>dsInformacoesCompletasWeb,System.String</value>
+          <value>dsSMTPEmailMensagens,System.String</value>
+          <value>dsEmailMensagens,System.String</value>
+          <value>dsSenhaEmailMensagens,System.String</value>
+          <value>flMostrarRealizador,System.Boolean</value>
+          <value>dsCSSEstiloWeb,System.String</value>
+          <value>nuDiasPrimeiroVencimento,System.Int32</value>
+          <value>codCobreBem,System.String</value>
+          <value>flLiberarCertificacaoWeb,System.Boolean</value>
+          <value>dsCnn,System.String</value>
+          <value>flLiberarCPFCoringa,System.Boolean</value>
+          <value>flMostrarMenu,System.Boolean</value>
+          <value>dtLimitePagamentoBoleto,System.DateTime</value>
+          <value>flImprimirCertificadoCredenciamento,System.Boolean</value>
+          <value>dsSMSCadastro,System.String</value>
+          <value>dsSMSConfirmaRecebimento,System.String</value>
+          <value>dsSMSConfirmaCadastro,System.String</value>
+          <value>dsSMSCancelamentoPedido,System.String</value>
+          <value>flPermitirDuplicidadeEmail,System.Boolean</value>
+          <value>flMostrarAtivQdoUmItem,System.Boolean</value>
+          <value>dsFormaGuardarMunicipio,System.String</value>
+          <value>imgBanner,System.Byte[]</value>
+          <value>imgLogo,System.Byte[]</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>Evento</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="1">
+          <value>_x0040_cdEvento,,22,6</value>
+        </Parameters>
+        <SqlCommand>select ev.*,imgBanner, imgLogo   
+from tbClientesEventos ev
+join tbEventosImagens img
+on ev.cdEvento = img.cdEvento	
+where ev.cdEvento = @cdEvento</SqlCommand>
+      </Evento>
+      <participantes Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="64">
+          <value>noParticipante,System.String</value>
+          <value>noCategoria,System.String</value>
+          <value>cdEvento,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>cdCredencial,System.String</value>
+          <value>dtCredencial,System.DateTime</value>
+          <value>cdCategoria,System.String</value>
+          <value>noEtiqueta,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsDocIdentificador,System.String</value>
+          <value>dsEmail,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>noBairro,System.String</value>
+          <value>noCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>noPais,System.String</value>
+          <value>dsFone1,System.String</value>
+          <value>dsFone2,System.String</value>
+          <value>dsFone3,System.String</value>
+          <value>noInstituicao,System.String</value>
+          <value>noCargo,System.String</value>
+          <value>noAreaAtuacao,System.String</value>
+          <value>dsSexo,System.String</value>
+          <value>dsNascimento,System.String</value>
+          <value>dsObservacoes,System.String</value>
+          <value>dsAuxiliar1,System.String</value>
+          <value>dsAuxiliar2,System.String</value>
+          <value>dsAuxiliar3,System.String</value>
+          <value>dsAuxiliar4,System.String</value>
+          <value>dsAuxiliar5,System.String</value>
+          <value>dsAuxiliar6,System.String</value>
+          <value>dsAuxiliar7,System.String</value>
+          <value>dsAuxiliar8,System.String</value>
+          <value>dsAuxiliar9,System.String</value>
+          <value>dsAuxiliar10,System.String</value>
+          <value>dsAuxiliar11,System.String</value>
+          <value>dsAuxiliar12,System.String</value>
+          <value>dsAuxiliar13,System.String</value>
+          <value>dsAuxiliar14,System.String</value>
+          <value>dsAuxiliar15,System.String</value>
+          <value>dsAuxiliar16,System.String</value>
+          <value>dsAuxiliar17,System.String</value>
+          <value>dsAuxiliar18,System.String</value>
+          <value>dsAuxiliar19,System.String</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>dtCadastro,System.DateTime</value>
+          <value>dsSenhaWeb,System.String</value>
+          <value>flEmailValidado,System.Boolean</value>
+          <value>flSMS_BV_Enviado,System.Boolean</value>
+          <value>flSMS_FoneValido,System.Boolean</value>
+          <value>cdPatrocinador,System.String</value>
+          <value>dsCampoExtraPreCad,System.String</value>
+          <value>tpInscrPatrocinada,System.String</value>
+          <value>flDocumentoConfirmado,System.Boolean</value>
+          <value>dsOperacao,System.String</value>
+          <value>cdOperador,System.String</value>
+          <value>dtOperacao,System.DateTime</value>
+          <value>flAceiteSMS,System.Boolean</value>
+          <value>dsComplementoEndereco,System.String</value>
+          <value>dsIdioma,System.String</value>
+          <value>dsCampoMultiplaEscolha1,System.String</value>
+          <value>dsCampoMultiplaEscolha2,System.String</value>
+          <value>dsCampoMultiplaEscolha3,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select part.*, cat.noCategoria
+	from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante</SqlCommand>
+      </participantes>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="5" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="3">
+        <CabeçalhoPágina1 Ref="6" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,3</ClientRectangle>
+          <Components isList="true" count="1">
+            <Imagem1 Ref="7" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,19,2.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn>Evento.imgBanner</DataColumn>
+              <DockStyle>Top</DockStyle>
+              <Guid>9b689a4e461a486a9fb0a4e88aefe40e</Guid>
+              <Name>Imagem1</Name>
+              <Page isRef="5" />
+              <Parent isRef="6" />
+              <Stretch>True</Stretch>
+            </Imagem1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>4710716773174ce7af6ecd7fec1a98a7</Guid>
+          <Name>CabeçalhoPágina1</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </CabeçalhoPágina1>
+        <RodapéPágina2 Ref="8" type="PageFooterBand" isKey="true">
+          <Border>Top;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,27.2,19,0.5</ClientRectangle>
+          <Components isList="true" count="3">
+            <Texto16 Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.1,3.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>4d6b84fa12984967803dea4e19377154</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto16</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Text>www.fazendomais.com.br</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto16>
+            <Texto17 Ref="10" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>16,0.1,2.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>8cb685847542478f9845f65c425a6706</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto17</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Text>{PageNofMThrough}</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto17>
+            <Texto18 Ref="11" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.8,0.1,5.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>f0305d68620349e08685a82677cd4d21</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Texto18</Name>
+              <Page isRef="5" />
+              <Parent isRef="8" />
+              <Text>{Time}</Text>
+              <TextBrush>Black</TextBrush>
+            </Texto18>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>addfb3ca2f114fd1b65b4334971d39d4</Guid>
+          <Name>RodapéPágina2</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+        </RodapéPágina2>
+        <Dataparticipantes Ref="12" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,4.2,19,14.2</ClientRectangle>
+          <Components isList="true" count="53">
+            <Dataparticipantes_cdParticipante Ref="13" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,0.8,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_cdParticipante</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.cdParticipante}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_cdParticipante>
+            <Dataparticipantes_nuCPFCNPJ Ref="14" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,1.4,3.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_nuCPFCNPJ</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.nuCPFCNPJ}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_nuCPFCNPJ>
+            <Dataparticipantes_dsAuxiliar1 Ref="15" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>8.4,1.4,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar1</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar1>
+            <Dataparticipantes_noParticipante Ref="16" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,2,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_noParticipante</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noParticipante}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_noParticipante>
+            <Dataparticipantes_noEtiqueta Ref="17" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,2.6,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_noEtiqueta</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noEtiqueta}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_noEtiqueta>
+            <Dataparticipantes_noCategoria Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,3.2,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_noCategoria</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noCategoria + IIF(participantes.dsAuxiliar14.Trim() != "", " - " + participantes.dsAuxiliar14, "") }</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_noCategoria>
+            <Dataparticipantes_dsSexo Ref="19" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,3.8,10.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsSexo</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsSexo}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsSexo>
+            <Dataparticipantes_dsFone1 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,4.4,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsFone1</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsFone1}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsFone1>
+            <Dataparticipantes_noPais Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,5,10.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_noPais</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noPais}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_noPais>
+            <Dataparticipantes_dsUF Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,5.6,9.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsUF</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noCidade + " - " + participantes.dsUF}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsUF>
+            <Dataparticipantes_noInstituicao Ref="23" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,6.2,4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_noInstituicao</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.noInstituicao}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_noInstituicao>
+            <Dataparticipantes_dsAuxiliar2 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>8.4,6.2,9.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar2</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar2}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar2>
+            <Dataparticipantes_dsEmail Ref="25" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,6.8,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsEmail</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsEmail}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsEmail>
+            <Dataparticipantes_dsAuxiliar3 Ref="26" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,7.4,11,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar3</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar3.ToLower()}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar3>
+            <Dataparticipantes_dsAuxiliar5 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,8.8,10.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar5</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar5}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar5>
+            <Dataparticipantes_dsAuxiliar6 Ref="28" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,9.4,5.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar6</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar6}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar6>
+            <Dataparticipantes_dsAuxiliar7 Ref="29" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,10,2.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar7</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar7}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar7>
+            <Dataparticipantes_dsAuxiliar15 Ref="30" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.2,10,8.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar15</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar15}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar15>
+            <Dataparticipantes_dsAuxiliar16 Ref="31" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,10.6,2.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar16</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar16}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar16>
+            <Dataparticipantes_dsAuxiliar18 Ref="32" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.2,10.6,7.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar18</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar18}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar18>
+            <Dataparticipantes_dsAuxiliar8 Ref="33" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,12,5.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar8</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar8}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar8>
+            <Dataparticipantes_dsAuxiliar9 Ref="34" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,12.6,3.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar9</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar9}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar9>
+            <Dataparticipantes_dsAuxiliar10 Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.2,12.6,5.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar10</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar10}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar10>
+            <Dataparticipantes_dsAuxiliar17 Ref="36" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>3,13.2,3.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar17</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar17}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar17>
+            <Dataparticipantes_dsAuxiliar19 Ref="37" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>9.2,13.2,5.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Dataparticipantes_dsAuxiliar19</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>{participantes.dsAuxiliar19}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </Dataparticipantes_dsAuxiliar19>
+            <Text1 Ref="38" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>[92:131:180]</Brush>
+              <ClientRectangle>0,11.2,19,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Dados da Passagem de Volta</Text>
+              <TextBrush>White</TextBrush>
+            </Text1>
+            <Text2 Ref="39" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>[92:131:180]</Brush>
+              <ClientRectangle>0,8,19,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>bd59631cf89042fa9a8692e10e226179</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Dados da Passagem de Ida</Text>
+              <TextBrush>White</TextBrush>
+            </Text2>
+            <Text3 Ref="40" type="Text" isKey="true">
+              <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+              <Brush>[92:131:180]</Brush>
+              <ClientRectangle>0,0,19,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,14,Bold</Font>
+              <Guid>94bf90ea1d414df5bbfc270a915c01b5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Dados de Cadastro</Text>
+              <TextBrush>White</TextBrush>
+            </Text3>
+            <Text4 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.8,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Nº de Inscrição:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+            <Text5 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,1.4,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>5e3dec1aef0e476b9c46f6c1dc308e58</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>CPF:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text5>
+            <Text6 Ref="43" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.2,1.4,2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>160f0ed633254ec3952b98b1f1010415</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Passaporte:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text6>
+            <Text7 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,2,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>3b0d8ddc85c24776acb4aa7a401443d0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Nome</Text>
+              <TextBrush>Black</TextBrush>
+            </Text7>
+            <Text8 Ref="45" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,2.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e97c36e2607743ab94a641686ece96e8</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Nome p/ Crachá:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text8>
+            <Text9 Ref="46" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,3.2,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>cb14fac2f0704e119d975866658d736b</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Categoria:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text9>
+            <Text10 Ref="47" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,3.8,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>ebcb9615f08b496795981c74c2c03ff0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Sexo:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text10>
+            <Text11 Ref="48" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,4.4,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>93068fba5b154f28b57acd9f2091da12</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Nº Celular:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text11>
+            <Text12 Ref="49" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,5,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>136e2c4618184f5c97cfac7fdaa3cec0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>País:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text12>
+            <Text13 Ref="50" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,5.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>f34fb205b9ea4aa78a114174bfb6b098</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Cidade:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text13>
+            <Text14 Ref="51" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,6.2,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>141ca61e1ba34b1894f016cd12adf558</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Instituição:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text14>
+            <Text15 Ref="52" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>7.2,6.2,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>8b62cd83eb5a4acebab70bd85f648057</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Qual:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text15>
+            <Text16 Ref="53" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,6.8,2.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>63e9ec54b1c342db9662702bf4c2d6e7</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Email Instucional:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text16>
+            <Text17 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,7.4,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>5a86188fb549472f8794448bd2bc6ec2</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Email Pessoal:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text17>
+            <Text18 Ref="55" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,8.8,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>0ce10885edbd4fb9970603acc1ce6631</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Origem:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text19 Ref="56" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,9.4,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>d588d523a6384ce39a5667346c1fdfc9</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Data:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text19>
+            <Text21 Ref="57" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,10,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e33536035fc6441bbd7f30447e50a7f5</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Hora de Partida:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text21>
+            <Text22 Ref="58" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,10.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>9ea52b320d4b4048a4ab30f80d68471e</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Voo:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text22>
+            <Text23 Ref="59" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6,10,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>f51208b5f56c45b6a2533737101731b0</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Hora de Chegada:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text23>
+            <Text24 Ref="60" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,10.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>e782730d677a442e8c43ee838276293a</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Localizador:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text24>
+            <Text20 Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,12,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>67f859987260433088a04814d72438aa</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Destino:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text20>
+            <Text25 Ref="62" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,12.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>66f849fac7e743e39fa1ba96269c3fcd</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Data:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text25>
+            <Text26 Ref="63" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,13.2,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>d35c672144a84283bf456df4b71257f8</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Voo:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text26>
+            <Text27 Ref="64" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,12.6,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>161ef477b16a47cf9f48ecb81b4c9df1</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Hora de Partida:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text27>
+            <Text28 Ref="65" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,13.2,2.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>8ab09edfcc48470ca4b7ff2f1e826750</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="5" />
+              <Parent isRef="12" />
+              <Text>Localizador:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text28>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dataparticipantes</Name>
+          <Page isRef="5" />
+          <Parent isRef="5" />
+          <Sort isList="true" count="0" />
+        </Dataparticipantes>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>f1cbce4deaca4e3cb40fc5d27a9b5f4e</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="66" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="67" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>8/20/2012 1:39:34 AM</ReportChanged>
+  <ReportCreated>8/20/2012 12:29:49 AM</ReportCreated>
+  <ReportFile>D:\Desenvolvimento\ConfigCongresso\EventosFM\InscricoesWeb\relatorios\rptDadosParticipante003003.mrt</ReportFile>
+  <ReportGuid>5d9ce4a94f3d46449c030f316ba95f71</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

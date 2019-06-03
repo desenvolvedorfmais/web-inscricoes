@@ -1,0 +1,765 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionStringEncrypted>4PLbKU0F8q34WxXx6VRhZ9Fa+WlhW0uBcUfV3OkEdz/C8vfIxk3ZvGpbZcB22OAP3GDBjMZZk/FpE6Vsb0ykbsNqzYlbTHMFaR/9CHoN4WeQVM+JVk/6zeFG1ezlTPZexnxlwsVxSxn4E+2AYQTgF954+SvGXDF94QjtyQ==</ConnectionStringEncrypted>
+        <Name>cnnCongresso</Name>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <dados Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>dados</Alias>
+        <Columns isList="true" count="48">
+          <value>cdPedido,System.String</value>
+          <value>cdEvento,System.String</value>
+          <value>cdParticipante,System.String</value>
+          <value>tpPedido,System.String</value>
+          <value>dtPedido,System.DateTime</value>
+          <value>vlTotalPedido,System.Decimal</value>
+          <value>flPago,System.Boolean</value>
+          <value>flAtivo,System.Boolean</value>
+          <value>tpPagamento,System.String</value>
+          <value>dsNomeRecibo,System.String</value>
+          <value>nuCEPRecibo,System.String</value>
+          <value>dsEnderecoRecibo,System.String</value>
+          <value>noBairroRecibo,System.String</value>
+          <value>noCidadeRecibo,System.String</value>
+          <value>dsUFRecibo,System.String</value>
+          <value>nuCPFCNPJRecibo,System.String</value>
+          <value>dsInscricaoEstadualRecibo,System.String</value>
+          <value>dtVencimentoPedido,System.DateTime</value>
+          <value>qtdParcelas,System.Int32</value>
+          <value>noBandeira,System.String</value>
+          <value>dsComplementoEnderRecibo,System.String</value>
+          <value>tpPessoa,System.String</value>
+          <value>cdTransacaoOutrosTpPgto,System.String</value>
+          <value>dsEmailResponsavelFinanceiro,System.String</value>
+          <value>dsFoneResponsavelFinanceiro,System.String</value>
+          <value>dsRamalResponsavelFinanceiro,System.String</value>
+          <value>dsNomeResponsavelFinanceiro,System.String</value>
+          <value>noMoeda,System.String</value>
+          <value>vlConversao,System.Decimal</value>
+          <value>noPaisRecibo,System.String</value>
+          <value>vlPIS,System.Decimal</value>
+          <value>vlCOFINS,System.Decimal</value>
+          <value>vlISS,System.Decimal</value>
+          <value>noParticipante,System.String</value>
+          <value>MiddleName,System.String</value>
+          <value>LastName,System.String</value>
+          <value>cdInvoice,System.String</value>
+          <value>nomRealizador,System.String</value>
+          <value>nuCPFCNPJ,System.String</value>
+          <value>dsInscricaoEstadual,System.String</value>
+          <value>dsEndereco,System.String</value>
+          <value>nomBairro,System.String</value>
+          <value>nomCidade,System.String</value>
+          <value>dsUF,System.String</value>
+          <value>nuCEP,System.String</value>
+          <value>nuFone,System.String</value>
+          <value>VencimentoInvoice,System.DateTime</value>
+          <value>vlDescontoCalculado,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>dados</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdPedido,,22,18</value>
+        </Parameters>
+        <SqlCommand>SELECT
+	p.*,
+  p1.noParticipante,
+  p1.dsAuxiliar1 MiddleName,
+  p1.dsAuxiliar2 LastName,
+  piv.cdInvoice
+  --a.noTitulo
+  ,de.nomRealizador
+  ,de.nuCPFCNPJ
+  ,de.dsInscricaoEstadual
+  ,de.dsEndereco
+  ,de.nomBairro
+  ,de.nomCidade
+  ,de.dsUF
+  ,de.nuCEP
+  ,de.nuFone
+  ,DATEADD(DAY,5,p.dtPedido) VencimentoInvoice
+  ,COALESCE(pcd.vlDescontoCalculado,0) vlDescontoCalculado
+FROM dbo.tbPedidos p 
+JOIN tbParticipantes p1 ON p.cdEvento = p1.cdEvento AND p.cdParticipante = p1.cdParticipante
+JOIN tbPedidoInVoice piv ON p.cdPedido = piv.cdPedido
+LEFT JOIN tbPedidosCupomDesconto pcd ON p.cdEvento = pcd.cdEvento AND p.cdPedido = pcd.cdPedido
+--JOIN tbPedidosAtividades pa ON p.cdPedido = pa.cdPedido
+--JOIN tbAtividades a ON p.cdEvento = a.cdEvento AND pa.cdAtividade = a.cdAtividade AND a.flInscricaoObrigatoria = 1
+
+JOIN tbDadosEvento de ON p.cdEvento = de.cdEvento
+
+  WHERE p.cdEvento = @cdEvento
+AND p.cdPedido = @cdPedido</SqlCommand>
+      </dados>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="38">
+        <PageHeaderBand1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,3.2</ClientRectangle>
+          <Components isList="true" count="2">
+            <Image1 Ref="6" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.4,8.4,2.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/007002/Logo_BLA.jpg</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+            </Image1>
+            <Image2 Ref="7" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>10.6,0.4,8.4,2.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Guid>bc36a1326e034aafbdd437fe591a6703</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <ImageURL>https://fazendomais.azurewebsites.net/imagensgeral/007002/logo-25anos_en.jpg</ImageURL>
+              <Name>Image2</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+            </Image2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderBand1>
+        <Text1 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>15.2,3.8,3,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,18,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>INVOICE</Text>
+          <TextBrush>Black</TextBrush>
+        </Text1>
+        <Text2 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>14.8,4.6,3,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,16,Bold</Font>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text2</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>2018/{dados.cdInvoice}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text2>
+        <Text3 Ref="10" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,6.2,9.8,3.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{dados.dsEndereco}
+{dados.nomBairro} - CEP: {dados.nuCEP}
+{dados.nomCidade}
+{dados.dsUF}, Brasil
+Phone +55 {dados.nuFone}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text3>
+        <Text4 Ref="11" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,5.6,9.8,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text4</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{dados.nomRealizador.ToUpper()}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text4>
+        <Text5 Ref="12" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>12,5.6,5.8,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14</Font>
+          <Guid>cd26e7ef01094f098a4761eb81ddaa80</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text5</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Date: {Format("{0:MM/dd/yyyy}", dados.dtPedido)}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text5>
+        <Text6 Ref="13" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>10.2,10.2,8.8,2.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14</Font>
+          <Guid>baf0ea89b114483db61108f7a8e591fd</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{dados.dsEnderecoRecibo}
+City/State/Province: {dados.dsComplementoEnderRecibo} 
+Country: {dados.noPaisRecibo}
+ZIP/Postal Code: {dados.nuCEPRecibo}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text6>
+        <Text7 Ref="14" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>10.2,9.6,8.8,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14,Bold</Font>
+          <Guid>c6f92ddaf9744061964fb0c17e393416</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text7</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{dados.dsNomeRecibo}</Text>
+          <TextBrush>Black</TextBrush>
+        </Text7>
+        <Text8 Ref="15" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>1.4,9.6,8.8,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14,Bold</Font>
+          <Guid>f37928ecc8154247b6f2d5b4e51b9c29</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text8</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Bill to:</Text>
+          <TextBrush>Black</TextBrush>
+        </Text8>
+        <Text9 Ref="16" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>0,13.2,15,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text9</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Description</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text9>
+        <Text10 Ref="17" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>15,13.2,4,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>0fbb37d3be5040afba3aec47b6eebd22</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text10</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Amount</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text10>
+        <Text11 Ref="18" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>0,13.8,15,1.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14</Font>
+          <Guid>8ff9aab3100343d7a8250a78d0464e6d</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text11</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>1 registration for the event BIO Latin America 2018, to be held on September 4-5, 2018, in São Paulo. Delegate:  {dados.LastName}, {dados.noParticipante}.</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+        </Text11>
+        <Text12 Ref="19" type="Text" isKey="true">
+          <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>16.2,13.8,2.8,1.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>21d20a20bd4c455fa79f7599cf60dcf5</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text12</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Format("{0:N2}", dados.vlTotalPedido - dados.vlDescontoCalculado)}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text12>
+        <Text13 Ref="20" type="Text" isKey="true">
+          <Border>Top, Bottom;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>15,13.8,1.2,1.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>b23e528512fe46a080f7830f738dd5e0</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text13</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>$</Text>
+          <TextBrush>Black</TextBrush>
+        </Text13>
+        <Text14 Ref="21" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>0,15.6,15,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,14</Font>
+          <Guid>7205c31330c54774bbeca4c9349c45df</Guid>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text14</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Total</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+        </Text14>
+        <Text15 Ref="22" type="Text" isKey="true">
+          <Border>Top, Right, Bottom;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>16.2,15.6,2.8,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>430d8b66ba154b93950f765ccc15dfe9</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text15</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Format("{0:N2}", dados.vlTotalPedido - dados.vlDescontoCalculado)}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text15>
+        <Text16 Ref="23" type="Text" isKey="true">
+          <Border>Top, Left, Bottom;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>15,15.6,1.2,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>5bd224d10ab9466198e3f512e0273b58</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text16</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>USD</Text>
+          <TextBrush>Black</TextBrush>
+        </Text16>
+        <Text17 Ref="24" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,16.6,2.2,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text17</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>** payment</Text>
+          <TextBrush>Black</TextBrush>
+        </Text17>
+        <Text18 Ref="25" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,18.2,3.6,0.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,11,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text18</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Remit to:</Text>
+          <TextBrush>Black</TextBrush>
+        </Text18>
+        <Text19 Ref="26" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>0,18.8,1.6,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text19</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CURRENCY</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text19>
+        <Text20 Ref="27" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>1.6,18.8,5,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text20</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CORRESPONDENT BANK</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text20>
+        <Text21 Ref="28" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>6.6,18.8,2.6,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text21</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>SWIFT (BIC CODE)</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text21>
+        <Text22 Ref="29" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>9.2,18.8,3.6,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text22</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>BENEFICIARY ACCOUNT AND AGENCY</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text22>
+        <Text23 Ref="30" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>12.8,18.8,6.2,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text23</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>BENEFICIARY NAME</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text23>
+        <Text24 Ref="31" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,19.6,1.6,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>7f851452df544bf0893dfa7e872ff5d1</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text24</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>USD</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text24>
+        <Text25 Ref="32" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>1.6,19.6,5,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>1968bed80abb45818755ac0099ce3f94</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text25</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>BANCO SANTANDER (BRASIL) S/A</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text25>
+        <Text26 Ref="33" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>6.6,19.6,2.6,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>96eb41ff8b17415b9a914e57e5b3a5e5</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text26</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>BSCHBRSP</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text26>
+        <Text27 Ref="34" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>9.2,19.6,3.6,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>91923aaf40874ac6bbd766a0f7002c08</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text27</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>AGENCY-3884     ACCOUNT-13.003.961-0</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text27>
+        <Text28 Ref="35" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>12.8,19.6,6.2,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>a9f0e3f0a0ee49f89fc644f113c9f7d2</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text28</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>FUNDAÇÃO BIOMINAS</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text28>
+        <Text29 Ref="36" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,21,4.4,0.5</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,11,Bold</Font>
+          <Guid>42564062890942aa96f95c8778a67d3e</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text29</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>Intermediary Bank:</Text>
+          <TextBrush>Black</TextBrush>
+        </Text29>
+        <Text30 Ref="37" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>0,21.6,1.6,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>25205a2e37334bdaaa27db2b9bd9686d</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text30</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>CURRENCY</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text30>
+        <Text31 Ref="38" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>1.6,21.6,5,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>7915aca5b8af49b78df75a0ff30b69ec</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text31</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>BENEFICIARY BANK</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text31>
+        <Text32 Ref="39" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>[216:216:216]</Brush>
+          <ClientRectangle>6.6,21.6,2.6,0.8</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>f331fbfbb91242379d6fec5eb2ac0291</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text32</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>SWIFT (BIC CODE)</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text32>
+        <Text35 Ref="40" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,22.4,1.6,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>2ed836813ba4407ea052b4a791d85b1e</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text35</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>USD</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text35>
+        <Text36 Ref="41" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <CanBreak>True</CanBreak>
+          <ClientRectangle>1.6,22.4,5,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>aac4bfa8ae3b404db16ffd1a05fc0459</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text36</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>STANDARD CHARTERED BANK</Text>
+          <TextBrush>Black</TextBrush>
+          <TextOptions>,,,,WordWrap=True,A=0</TextOptions>
+          <VertAlignment>Center</VertAlignment>
+        </Text36>
+        <Text37 Ref="42" type="Text" isKey="true">
+          <Border>All;Black;1;Solid;False;4;Black</Border>
+          <Brush>Transparent</Brush>
+          <ClientRectangle>6.6,22.4,2.6,1.2</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,10,Bold</Font>
+          <Guid>cd7869df40e149da92594e286bdb120f</Guid>
+          <HorAlignment>Center</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text37</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>SCBLUS33</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text37>
+        <Text33 Ref="43" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0.2,17.2,18.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12</Font>
+          <Guid>3da12e8c9df24238b0346deeb7e3240c</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text33</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>* please note that you are responsible for paying all wire transfers fees.</Text>
+          <TextBrush>Black</TextBrush>
+        </Text33>
+        <Text34 Ref="44" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>2.4,16.6,6.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Calibri,12,Bold</Font>
+          <Guid>eb7c7a1e6e9441139dcf00510b92d991</Guid>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text34</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{Format("{0:MM/dd/yyyy}", dados.VencimentoInvoice)}</Text>
+          <TextBrush>[237:28:36]</TextBrush>
+        </Text34>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>ad439e89cecd4080bc09d9a84074f28c</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="45" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="46" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>6/4/2018 11:55:26 AM</ReportChanged>
+  <ReportCreated>4/15/2018 2:47:07 PM</ReportCreated>
+  <ReportFile>C:\Unidade D\Eventos\Biominas\2018\rptInvoice007002.mrt</ReportFile>
+  <ReportGuid>974c5f2eef164b5b9d432832ba016367</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2015.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

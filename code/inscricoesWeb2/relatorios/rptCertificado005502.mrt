@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.0" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <cnnCongresso Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>cnnCongresso</Alias>
+        <ConnectionString>Password=Krksa171;Persist Security Info=True;Data Source=.\sql2012express;Integrated Security=False;Initial Catalog=dbEventos_FMLocal;User ID=sa</ConnectionString>
+        <Name>cnnCongresso</Name>
+        <PromptUserNameAndPassword>False</PromptUserNameAndPassword>
+      </cnnCongresso>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <participantes Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>participantes</Alias>
+        <Columns isList="true" count="1">
+          <value>noParticipante,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>participantes</Name>
+        <NameInSource>cnnCongresso</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_cdEvento,,22,6</value>
+          <value>_x0040_cdParticipante,,22,9</value>
+        </Parameters>
+        <SqlCommand>select noParticipante
+from tbParticipantes part
+join tbCategorias cat
+on part.cdEvento = cat.cdEvento
+and part.cdCategoria = cat.cdCategoria
+where part.cdEvento = @cdEvento
+and part.cdParticipante = @cdParticipante</SqlCommand>
+      </participantes>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV1</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="2">
+    <Página1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <Dados1 Ref="5" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,0.4,29.7,21</ClientRectangle>
+          <Components isList="true" count="3">
+            <Image1 Ref="6" type="Image" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,29.7,21</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <ImageURL>https://inscricoesweb.fazendomais.com/imagensgeral/005502/seminario2014_certificado_impresso.png</ImageURL>
+              <Name>Image1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Stretch>True</Stretch>
+            </Image1>
+            <Text1 Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>11.25,9.4,7.2,1.2</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Calibri,28,Bold</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>CERTIFICADO</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <RichText1 Ref="8" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>4.55,12,20.6,6.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <DataColumn />
+              <Margins>0,0,0,0</Margins>
+              <Name>RichText1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>__LP___x005C_rtf1_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fswiss_x005C_fprq2_x005C_fcharset0_x0020_Calibri_x003B___RP____LP___x005C_f1_x005C_fnil_x005C_fcharset0_x0020_Microsoft_x0020_Sans_x0020_Serif_x003B___RP____RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_sa200_x005C_sl276_x005C_slmult1_x005C_qc_x005C_f0_x005C_fs32_x0020_A_x0020_Associa_x005C__x0027_e7_x005C__x0027_e3o_x0020_Nacional_x0020_das_x0020_Empresas_x0020_de_x0020_Transportes_x0020_Urbanos_x0020__x0028_NTU_x0029__x0020_confere_x0020_a_x005C_par_x000D__x000A__x005C_b_x005C_fs48_x007B_participantes.noParticipante.ToUpper_x0028__x0029__x007D__x005C_b0_x005C_fs32_x005C_par_x000D__x000A_o_x0020_presente_x0020_certificado_x0020_pela_x0020_participa_x005C__x0027_e7_x005C__x0027_e3o_x0020_no_x0020_Semin_x005C__x0027_e1rio_x0020_Nacional_x0020_NTU_x002C__x0020_realizado_x005C_par_x000D__x000A_nos_x0020_dias_x0020_27_x0020_e_x0020_28_x0020_de_x0020_agosto_x0020_de_x0020_2014_x002C__x0020_em_x0020_Bras_x005C__x0027_edlia._x005C_par_x000D__x000A__x005C_par_x000D__x000A__x005C_fs22_x005C_par_x000D__x000A__x005C_pard_x005C_f1_x005C_fs17_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+            </RichText1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>participantes</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>Dados1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </Dados1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>d90da8cca33d44bc9a9c663fd2b223cb</Guid>
+      <Margins>0,0,0,0</Margins>
+      <Name>Página1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="9" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Página1>
+    <Page1 Ref="10" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="1">
+        <RichText2 Ref="11" type="Stimulsoft.Report.Components.StiRichText" isKey="true">
+          <BackColor>Transparent</BackColor>
+          <ClientRectangle>2.4,3,22.6,12.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <DataColumn />
+          <Margins>0,0,0,0</Margins>
+          <Name>RichText2</Name>
+          <Page isRef="10" />
+          <Parent isRef="10" />
+          <Text>__LP___x005C_rtf1_x005C_fbidis_x005C_ansi_x005C_ansicpg1252_x005C_deff0_x005C_deflang1046__LP___x005C_fonttbl__LP___x005C_f0_x005C_fswiss_x005C_fprq2_x005C_fcharset0_x0020_Calibri_x003B___RP____RP___x000D__x000A__x005C_viewkind4_x005C_uc1_x005C_pard_x005C_ltrpar_x005C_sa200_x005C_sl276_x005C_slmult1_x005C_b_x005C_f0_x005C_fs28_x0020_Grade_x0020_hor_x005C__x0027_e1ria_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_sa200_x005C_sl276_x005C_slmult1_x005C_qj_x005C_b0_x0020_Dia_x0020_27_x0020_de_x0020_agosto_x0020_de_x0020_2014_x005C_par_x000D__x000A_10h30_x0020__x005C__x0027_e0s_x0020_13h00_x0020_-_x0020_Painel_x0020__x005C_ldblquote_x0020_Transporte_x0020_p_x005C__x0027_fablico_x0020_urbano:_x0020_como_x0020_atender_x0020_as_x0020_demandas_x0020_sociais_x003F__x005C_rdblquote_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_sa200_x005C_sl276_x005C_slmult1_x0020_14h30_x0020__x005C__x0027_e0s_x0020_17h30_x0020_-_x0020_Painel_x0020__x005C_ldblquote_x0020_Qualidade_x0020_e_x0020_seguran_x005C__x0027_e7a_x0020_nos_x0020_sistemas_x0020_BRT_x005C_rdblquote_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_sa200_x005C_sl276_x005C_slmult1_x005C_qj_x005C_par_x000D__x000A_Dia_x0020_28_x0020_de_x0020_agosto_x0020_de_x0020_2014_x005C_par_x000D__x000A_9h30_x0020__x005C__x0027_e0s_x0020_11h00_x0020_-_x0020_Painel_x0020__x005C_ldblquote_x0020_Lei_x0020_Anticorrup_x005C__x0027_e7_x005C__x0027_e3o_x0020_e_x0020_Pol_x005C__x0027_edtica_x0020_de_x0020_Compliance_x005C_rdblquote_x005C_par_x000D__x000A__x005C_b_x0020_Oficina:_x0020__x005C_ldblquote_x0020_Sistemas_x0020_Inteligentes_x0020_de_x0020_Transporte_x005C_rdblquote_x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_sb240_x005C_sa120_x005C_b0_x0020_11h30_x0020__x005C__x0027_e0s_x0020_13h00_x0020_-_x0020_Perspectivas_x0020_do_x0020_ITS_x0020_no_x0020_Brasil_x0020__x005C_par_x000D__x000A_14h30_x0020__x005C__x0027_e0s_x0020_16h00_x0020_-_x0020_Bilhetagem_x0020_eletr_x005C__x0027_f4nica_x0020_e_x0020_tecnologias_x0020_para_x0020_controle_x0020_das_x0020_gratuidades_x0020__x005C_par_x000D__x000A_16h00_x0020__x005C__x0027_e0s_x0020_17h00_x0020_-_x0020_Gest_x005C__x0027_e3o_x0020_Operacional_x0020_e_x0020_Informa_x005C__x0027_e7_x005C__x0027_e3o_x0020_ao_x0020_Usu_x005C__x0027_e1rio_x0020__x005C_par_x000D__x000A__x005C_pard_x005C_ltrpar_x005C_b_x005C_par_x000D__x000A___RP___x000D__x000A_</Text>
+        </RichText2>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>e95631adb9b845719450da63140ebd7e</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <Orientation>Landscape</Orientation>
+      <PageHeight>21</PageHeight>
+      <PageWidth>29.7</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="12" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="13" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Relatório</ReportAlias>
+  <ReportChanged>8/31/2014 10:39:09 PM</ReportChanged>
+  <ReportCreated>6/26/2009 3:37:01 PM</ReportCreated>
+  <ReportFile>D:\imgTmp\OTM Editora\NTU\Relatorios\rptCertificado005502.mrt</ReportFile>
+  <ReportGuid>f808a84855a749f983bc0432b2f4262c</ReportGuid>
+  <ReportName>Relatório</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2010.1.700</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    
+    public class Relatório : Stimulsoft.Report.StiReport
+    {
+        
+        public Relatório()
+        {
+            this.InitializeComponent();
+        }
+        #region StiReport Designer generated code - do not modify#endregion StiReport Designer generated code - do not modify
+    }
+}</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>
